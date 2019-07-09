@@ -1,0 +1,1424 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DA2210D3-5C74-4A82-B04B-39046B374415}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Project.MVCUI</RootNamespace>
+    <AssemblyName>Project.MVCUI</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\assets\advanced-datatable\docs\34cdb56b2c.html" />
+    <Content Include="Areas\assets\advanced-datatable\docs\DataTable.defaults.columns.html" />
+    <Content Include="Areas\assets\advanced-datatable\docs\DataTable.defaults.html" />
+    <Content Include="Areas\assets\advanced-datatable\docs\DataTable.defaults.oLanguage.html" />
+    <Content Include="Areas\assets\advanced-datatable\docs\DataTable.defaults.oLanguage.oAria.html" />
+    <Content Include="Areas\assets\advanced-datatable\docs\DataTable.defaults.oLanguage.oPaginate.html" />
+    <Content Include="Areas\assets\advanced-datatable\docs\DataTable.defaults.oSearch.html" />
+    <Content Include="Areas\assets\advanced-datatable\docs\DataTable.ext.html" />
+    <Content Include="Areas\assets\advanced-datatable\docs\DataTable.html" />
+    <Content Include="Areas\assets\advanced-datatable\docs\DataTable.models.ext.html" />
+    <Content Include="Areas\assets\advanced-datatable\docs\DataTable.models.html" />
+    <Content Include="Areas\assets\advanced-datatable\docs\DataTable.models.oColumn.html" />
+    <Content Include="Areas\assets\advanced-datatable\docs\DataTable.models.oRow.html" />
+    <Content Include="Areas\assets\advanced-datatable\docs\DataTable.models.oSearch.html" />
+    <Content Include="Areas\assets\advanced-datatable\docs\DataTable.models.oSettings.html" />
+    <Content Include="Areas\assets\advanced-datatable\docs\DataTable.models.oSettings.oBrowser.html" />
+    <Content Include="Areas\assets\advanced-datatable\docs\DataTable.models.oSettings.oFeatures.html" />
+    <Content Include="Areas\assets\advanced-datatable\docs\DataTable.models.oSettings.oLanguage.html" />
+    <Content Include="Areas\assets\advanced-datatable\docs\DataTable.models.oSettings.oPreviousSearch.html" />
+    <Content Include="Areas\assets\advanced-datatable\docs\DataTable.models.oSettings.oScroll.html" />
+    <Content Include="Areas\assets\advanced-datatable\docs\index.html" />
+    <Content Include="Areas\assets\advanced-datatable\docs\media\css\doc.css" />
+    <Content Include="Areas\assets\advanced-datatable\docs\media\css\shCore.css" />
+    <Content Include="Areas\assets\advanced-datatable\docs\media\css\shThemeDataTables.css" />
+    <Content Include="Areas\assets\advanced-datatable\docs\media\images\arrow.jpg" />
+    <Content Include="Areas\assets\advanced-datatable\docs\media\images\arrow.png" />
+    <Content Include="Areas\assets\advanced-datatable\docs\media\images\extended.png" />
+    <Content Include="Areas\assets\advanced-datatable\docs\media\js\doc.js" />
+    <Content Include="Areas\assets\advanced-datatable\docs\media\js\jquery.js" />
+    <Content Include="Areas\assets\advanced-datatable\docs\media\js\shBrushJScript.js" />
+    <Content Include="Areas\assets\advanced-datatable\docs\media\js\shCore.js" />
+    <Content Include="Areas\assets\advanced-datatable\examples\advanced_init\column_render.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\advanced_init\complex_header.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\advanced_init\defaults.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\advanced_init\dom_multiple_elements.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\advanced_init\dom_toolbar.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\advanced_init\dt_events.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\advanced_init\events_live.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\advanced_init\events_post_init.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\advanced_init\events_pre_init.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\advanced_init\footer_callback.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\advanced_init\highlight.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\advanced_init\html_sort.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\advanced_init\language_file.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\advanced_init\length_menu.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\advanced_init\localstorage.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\advanced_init\row_callback.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\advanced_init\row_grouping.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\advanced_init\sorting_control.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\ajax\ajax.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\ajax\custom_data_property.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\ajax\deep.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\ajax\defer_render.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\ajax\null_data_source.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\ajax\objects.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\ajax\objects_subarrays.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\ajax\sources\arrays.txt" />
+    <Content Include="Areas\assets\advanced-datatable\examples\ajax\sources\arrays_subobjects.txt" />
+    <Content Include="Areas\assets\advanced-datatable\examples\ajax\sources\array_only.txt" />
+    <Content Include="Areas\assets\advanced-datatable\examples\ajax\sources\custom_prop.txt" />
+    <Content Include="Areas\assets\advanced-datatable\examples\ajax\sources\deep.txt" />
+    <Content Include="Areas\assets\advanced-datatable\examples\ajax\sources\objects.txt" />
+    <Content Include="Areas\assets\advanced-datatable\examples\ajax\sources\objects_subarrays.txt" />
+    <Content Include="Areas\assets\advanced-datatable\examples\api\add_row.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\api\api_in_init.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\api\counter_column.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\api\editable.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\api\form.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\api\highlight.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\api\multi_filter.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\api\multi_filter_select.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\api\regex.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\api\row_details.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\api\select_row.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\api\select_single_row.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\api\show_hide.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\api\tabs_and_scrolling.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\basic_init\alt_pagination.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\basic_init\base.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\basic_init\base_themeroller.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\basic_init\complex_header.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\basic_init\dom.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\basic_init\filter_only.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\basic_init\flexible_width.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\basic_init\hidden_columns.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\basic_init\language.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\basic_init\multiple_tables.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\basic_init\multi_col_sort.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\basic_init\scroll_x.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\basic_init\scroll_xy.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\basic_init\scroll_y.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\basic_init\scroll_y_infinite.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\basic_init\scroll_y_theme.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\basic_init\state_save.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\basic_init\table_sorting.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\basic_init\themes.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\basic_init\zero_config.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\data_sources\ajax.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\data_sources\dom.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\data_sources\js_array.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\data_sources\server_side.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\data.sql" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\details_close.png" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\details_open.png" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\de_DE.txt" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\editable_ajax.php" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\index.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\infiniteScroll.php" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\jquery-ui-tabs.js" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\jquery.jeditable.js" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\jquery.tooltip.css" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\jquery.tooltip.js" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\syntax\css\shCore.css" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\syntax\images\arrow.jpg" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\syntax\images\extended.png" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\syntax\js\shCore.js" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\themes\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\themes\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\themes\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\themes\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\themes\smoothness\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\themes\smoothness\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\themes\smoothness\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\themes\smoothness\images\ui-icons_222222_256x240.png" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\themes\smoothness\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\themes\smoothness\images\ui-icons_454545_256x240.png" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\themes\smoothness\images\ui-icons_888888_256x240.png" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\themes\smoothness\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\themes\smoothness\jquery-ui-1.8.4.custom.css" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\themes\ui-lightness\images\ui-icons_222222_256x240.png" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\themes\ui-lightness\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\themes\ui-lightness\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\themes\ui-lightness\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\themes\ui-lightness\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\themes\ui-lightness\jquery-ui-1.8.4.custom.css" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\vv.png" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\xx.png" />
+    <Content Include="Areas\assets\advanced-datatable\examples\index.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\plug-ins\dom_sort.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\plug-ins\html_sort.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\plug-ins\paging_plugin.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\plug-ins\plugin_api.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\plug-ins\range_filtering.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\plug-ins\sorting_plugin.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\plug-ins\sorting_sType.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\server_side\custom_vars.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\server_side\defer_loading.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\server_side\editable.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\server_side\ids.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\server_side\jsonp.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\server_side\object_data.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\server_side\pipeline.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\server_side\post.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\server_side\row_details.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\server_side\scripts\custom_data_property.php" />
+    <Content Include="Areas\assets\advanced-datatable\examples\server_side\scripts\details_col.php" />
+    <Content Include="Areas\assets\advanced-datatable\examples\server_side\scripts\filter_col.php" />
+    <Content Include="Areas\assets\advanced-datatable\examples\server_side\scripts\id.php" />
+    <Content Include="Areas\assets\advanced-datatable\examples\server_side\scripts\id_jsonp.php" />
+    <Content Include="Areas\assets\advanced-datatable\examples\server_side\scripts\jsonp.php" />
+    <Content Include="Areas\assets\advanced-datatable\examples\server_side\scripts\objects.php" />
+    <Content Include="Areas\assets\advanced-datatable\examples\server_side\scripts\objects_jsonp.php" />
+    <Content Include="Areas\assets\advanced-datatable\examples\server_side\scripts\post.php" />
+    <Content Include="Areas\assets\advanced-datatable\examples\server_side\scripts\server_processing.php" />
+    <Content Include="Areas\assets\advanced-datatable\examples\server_side\select_rows.html" />
+    <Content Include="Areas\assets\advanced-datatable\examples\server_side\server_side.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\callbacks.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\columns.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\index.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\inputs.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\media\css\AutoFill.css" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\media\docs\02ff627f40.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\media\docs\36456bf45f.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\media\docs\47cac4f141.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\media\docs\5a72546831.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\media\docs\8ee4007a12.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\media\docs\a69b02bcf2.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\media\docs\AutoFill.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\media\docs\b44bd4821a.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\media\docs\c6945fdb4a.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\media\docs\global.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\media\docs\index.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\media\docs\media\css\doc.css" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\media\docs\media\css\shCore.css" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\media\docs\media\css\shThemeDataTables.css" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\media\docs\media\images\arrow.jpg" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\media\docs\media\images\arrow.png" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\media\docs\media\images\extended.png" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\media\docs\media\js\doc.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\media\docs\media\js\jquery.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\media\docs\media\js\shBrushJScript.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\media\docs\media\js\shCore.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\media\images\filler.png" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\media\js\AutoFill.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\media\js\AutoFill.min.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\scrolling.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\alt_insert.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\colvis.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\col_filter.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\fixedcolumns.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\fixedheader.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\index.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\media\css\ColReorder.css" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\media\docs\46848f6f3b.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\media\docs\4f1246032c.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\media\docs\a69b02bcf2.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\media\docs\ColReorder.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\media\docs\global.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\media\docs\index.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\media\docs\media\css\doc.css" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\media\docs\media\css\shCore.css" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\media\docs\media\css\shThemeDataTables.css" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\media\docs\media\images\arrow.jpg" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\media\docs\media\images\arrow.png" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\media\docs\media\images\extended.png" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\media\docs\media\js\doc.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\media\docs\media\js\jquery.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\media\docs\media\js\shBrushJScript.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\media\docs\media\js\shCore.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\media\images\insert.png" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\media\js\ColReorder.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\media\js\ColReorder.min.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\predefined.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\reset.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\scrolling.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\server_side.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\state_save.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\theme.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\exclude_columns.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\index.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\media\css\ColVis.css" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\media\css\ColVisAlt.css" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\media\docs\a69b02bcf2.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\media\docs\ccb5a49865.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\media\docs\ColVis.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\media\docs\global.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\media\docs\index.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\media\docs\media\css\doc.css" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\media\docs\media\css\shCore.css" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\media\docs\media\css\shThemeDataTables.css" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\media\docs\media\images\arrow.jpg" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\media\docs\media\images\arrow.png" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\media\docs\media\images\extended.png" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\media\docs\media\js\doc.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\media\docs\media\js\jquery.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\media\docs\media\js\shBrushJScript.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\media\docs\media\js\shCore.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\media\images\button.png" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\media\js\ColVis.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\media\js\ColVis.min.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\mouseover.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\style.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\text.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\theme.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\title_callback.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\two_tables.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\two_tables_identical.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\col_filter.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\css_size.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\docs\070023b890.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\docs\526f872207.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\docs\73098af57c.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\docs\889588ec06.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\docs\91bce7c4ad.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\docs\a6bd52f587.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\docs\d3890ba7c4.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\docs\e20106c59a.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\docs\FixedColumns.defaults.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\docs\FixedColumns.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\docs\global.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\docs\index.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\docs\media\css\doc.css" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\docs\media\css\shCore.css" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\docs\media\css\shThemeDataTables.css" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\docs\media\images\arrow.jpg" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\docs\media\images\arrow.png" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\docs\media\images\extended.png" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\docs\media\js\doc.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\docs\media\js\jquery.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\docs\media\js\shBrushJScript.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\docs\media\js\shCore.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\index.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\index_column.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\left_right_columns.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\media\js\FixedColumns.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\media\js\FixedColumns.min.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\right_column.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\rowspan.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\row_grouping.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\row_grouping_height.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\scale_fixed.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\scale_relative.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\server-side-processing.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\themed.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\two_columns.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\x_y_scrolling.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedHeader\html_table.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedHeader\index.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedHeader\js\FixedHeader.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedHeader\js\FixedHeader.min.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedHeader\top_bottom_left_right.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedHeader\top_left.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedHeader\two_tables.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedHeader\zIndexes.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\KeyTable\datatable.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\KeyTable\datatable_scrolling.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\KeyTable\editing.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\KeyTable\form.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\KeyTable\index.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\KeyTable\js\KeyTable.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\KeyTable\js\KeyTable.min.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\api_scrolling.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\index.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\large_js_source.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\media\css\dataTables.scroller.css" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\media\data\2500.txt" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\media\data\server_processing.php" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\media\docs\baed189d4a.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\media\docs\c6053fac6b.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\media\docs\index.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\media\docs\media\css\doc.css" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\media\docs\media\css\shCore.css" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\media\docs\media\css\shThemeDataTables.css" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\media\docs\media\images\arrow.jpg" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\media\docs\media\images\arrow.png" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\media\docs\media\images\extended.png" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\media\docs\media\js\doc.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\media\docs\media\js\jquery.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\media\docs\media\js\shBrushJScript.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\media\docs\media\js\shCore.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\media\docs\Scroller.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\media\docs\Scroller.oDefaults.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\media\images\loading-background.png" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\media\js\dataTables.scroller.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\media\js\dataTables.scroller.min.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\server-side_processing.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\state_saving.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\alter_buttons.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\alt_init.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\bootstrap.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\button_text.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\collection.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\defaults.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\index.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\css\TableTools.css" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\css\TableTools_JUI.css" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\images\background.png" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\images\collection.png" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\images\collection_hover.png" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\images\copy.png" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\images\copy_hover.png" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\images\csv.png" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\images\csv_hover.png" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\images\pdf.png" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\images\pdf_hover.png" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\images\print.png" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\images\print_hover.png" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\images\xls.png" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\images\xls_hover.png" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\js\TableTools.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\js\TableTools.min.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\js\ZeroClipboard.js" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\swf\copy_csv_xls.swf" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\swf\copy_csv_xls_pdf.swf" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\multiple_tables.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\multi_instance.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\pdf_message.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\plug-in.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\select_multi.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\select_single.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\swf_path.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\tabs.html" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\theme.html" />
+    <Content Include="Areas\assets\advanced-datatable\license-bsd.txt" />
+    <Content Include="Areas\assets\advanced-datatable\license-gpl2.txt" />
+    <Content Include="Areas\assets\advanced-datatable\media\css\demo_page.css" />
+    <Content Include="Areas\assets\advanced-datatable\media\css\demo_table.css" />
+    <Content Include="Areas\assets\advanced-datatable\media\css\demo_table_jui.css" />
+    <Content Include="Areas\assets\advanced-datatable\media\css\jquery.dataTables.css" />
+    <Content Include="Areas\assets\advanced-datatable\media\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Areas\assets\advanced-datatable\media\images\back_disabled.png" />
+    <Content Include="Areas\assets\advanced-datatable\media\images\back_enabled.png" />
+    <Content Include="Areas\assets\advanced-datatable\media\images\back_enabled_hover.png" />
+    <Content Include="Areas\assets\advanced-datatable\media\images\favicon.ico" />
+    <Content Include="Areas\assets\advanced-datatable\media\images\forward_disabled.png" />
+    <Content Include="Areas\assets\advanced-datatable\media\images\forward_enabled.png" />
+    <Content Include="Areas\assets\advanced-datatable\media\images\forward_enabled_hover.png" />
+    <Content Include="Areas\assets\advanced-datatable\media\images\sort_asc.png" />
+    <Content Include="Areas\assets\advanced-datatable\media\images\sort_asc_disabled.png" />
+    <Content Include="Areas\assets\advanced-datatable\media\images\sort_both.png" />
+    <Content Include="Areas\assets\advanced-datatable\media\images\sort_desc.png" />
+    <Content Include="Areas\assets\advanced-datatable\media\images\sort_desc_disabled.png" />
+    <Content Include="Areas\assets\advanced-datatable\media\js\jquery.dataTables.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\js\jquery.dataTables.min.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\js\jquery.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\api\api.internal.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\api\api.methods.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\api\api.static.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\core\core.ajax.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\core\core.columns.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\core\core.constructor.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\core\core.data.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\core\core.draw.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\core\core.filter.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\core\core.info.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\core\core.init.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\core\core.length.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\core\core.page.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\core\core.processing.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\core\core.scrolling.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\core\core.sizing.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\core\core.sort.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\core\core.state.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\core\core.support.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\DataTables.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\ext\ext.classes.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\ext\ext.paging.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\ext\ext.sorting.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\ext\ext.types.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\model\model.column.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\model\model.defaults.columns.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\model\model.defaults.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\model\model.ext.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\model\model.row.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\model\model.search.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\src\model\model.settings.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\controller.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\controller.php" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\index.html" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\performance\draw.html" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\performance\large.php" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\performance\page.html" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\performance\sort.html" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\templates\-complex_header.php" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\templates\2512.php" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\templates\6776.php" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\templates\complex_header_2.php" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\templates\deferred_table.php" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\templates\dom_data.php" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\templates\dom_data_th.php" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\templates\dom_data_two_headers.php" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\templates\dymanic_table.php" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\templates\empty_table.php" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\templates\html_table.php" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\templates\js_data.php" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\templates\js_data_mixed_types.php" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\templates\two_tables.php" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests\1_dom\_zero_config.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\-complex_header.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\-iDraw.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\2512.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\2530-2.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\2530.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\2569.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\2600.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\2608.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\2635.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\2746-stable-sort.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\2799.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\2840-restore-table-width.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\2914-state-save-sort.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\5396-fnUpdate-arrays-mData.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\5396-fnUpdate-arrays.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\5508-xscroll-zero-content.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\6776-scrolling-table-grows.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aaSorting.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aaSortingFixed.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aoColumns.bSearchable.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aoColumns.bSortable.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aoColumns.bUseRendered.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aoColumns.bVisible.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aoColumns.bVisible2.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aoColumns.fnRender.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aoColumns.iDataSort.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aoColumns.sClass.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aoColumns.sName.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aoColumns.sTitle.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aoColumns.sWidth.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\aoSearchCols.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\asStripClasses.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\bAutoWidth.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\bFilter.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\bInfiniteScroll.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\bInfo.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\bJQueryUI.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\bLengthChange.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\bPaginate.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\bProcessing.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\bServerSide.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\bSort.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\bSortCellsTop.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\bSortClasses.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\fnCookieCallback.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\fnCreatedCell.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\fnCreatedRow.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\fnDeleteRow.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\fnDrawCallback.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\fnFilter.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\fnFooterCallback.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\fnHeaderCallback.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\fnInfoCallback.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\fnInitComplete.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\fnRowCallback.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\fnSetColumnVis.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\fnSetColumnVis2.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\html-autodetect-sort.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\iDisplayLength.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\oLanguage.oPaginate.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\oLanguage.sInfo.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\oLanguage.sInfoEmpty.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\oLanguage.sInfoPostFix.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\oLanguage.sLengthMenu.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\oLanguage.sProcessing.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\oLanguage.sSearch.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\oLanguage.sUrl.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\oLanguage.sZeroRecords.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\oSearch.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\sAjaxSource.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\sDom.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\sPaginationType.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\sScrollXY.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\th_in_body.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\_getDataFunctions.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\_setDataFunctions.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\1_dom\_zero_config.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\39-nested-null.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\6872-default-content-missing-props.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\8549--string-sorting-nonstrings.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\aaSorting.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\aaSortingFixed.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\aoColumns.bSearchable.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\aoColumns.bSortable.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\aoColumns.bUseRendered.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\aoColumns.bVisible.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\aoColumns.fnRender.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\aoColumns.iDataSort.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\aoColumns.sClass.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\aoColumns.sName.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\aoColumns.sTitle.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\aoColumns.sWidth.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\aoSearchCols.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\asStripClasses.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\bAutoWidth.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\bFilter.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\bInfo.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\bLengthChange.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\bPaginate.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\bProcessing.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\bServerSide.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\bSort.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\bSortClasses.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\fnCreatedCell.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\fnCreatedRow.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\fnDrawCallback.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\fnFooterCallback.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\fnHeaderCallback.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\fnInitComplete.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\fnRowCallback.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\iDisplayLength.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\js_data_mixed_types.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\oLanguage.oPaginate.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\oLanguage.sInfo.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\oLanguage.sInfoEmpty.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\oLanguage.sInfoPostFix.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\oLanguage.sLengthMenu.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\oLanguage.sProcessing.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\oLanguage.sSearch.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\oLanguage.sUrl.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\oLanguage.sZeroRecords.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\oSearch.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\sAjaxSource.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\sDom.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\sPaginationType.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\2_js\_zero_config.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\aaSorting.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\aaSortingFixed.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\aoColumns.bSearchable.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\aoColumns.bSortable.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\aoColumns.bUseRendered.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\aoColumns.bVisible.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\aoColumns.fnRender.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\aoColumns.iDataSort.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\aoColumns.sClass.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\aoColumns.sName.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\aoColumns.sTitle.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\aoColumns.sWidth.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\aoSearchCols.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\asStripClasses.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\bAutoWidth.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\bFilter.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\bInfo.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\bLengthChange.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\bPaginate.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\bProcessing.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\bServerSide.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\bSort.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\bSortClasses.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\fnCreatedCell.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\fnCreatedRow.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\fnDrawCallback.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\fnHeaderCallback.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\fnInitComplete.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\fnRowCallback.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\fnServerData.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\iDisplayLength.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\oLanguage.oPaginate.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\oLanguage.sInfo.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\oLanguage.sInfoEmpty.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\oLanguage.sInfoPostFix.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\oLanguage.sLengthMenu.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\oLanguage.sLoadingRecords.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\oLanguage.sProcessing.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\oLanguage.sSearch.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\oLanguage.sUrl.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\oLanguage.sZeroRecords.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\oSearch.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\sAjaxDataProp.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\sAjaxDataProp2.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\sAjaxSource.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\sDom.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\sPaginationType.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\3_ajax\_zero_config.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\-iDraw.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\2440.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\2569.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\2600.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\aaSorting.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\aaSortingFixed.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\aoColumns.bSearchable.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\aoColumns.bSortable.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\aoColumns.bUseRendered.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\aoColumns.bVisible.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\aoColumns.fnRender.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\aoColumns.sClass.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\aoColumns.sName.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\aoColumns.sTitle.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\aoColumns.sWidth.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\aoSearchCols.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\asStripClasses.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\bAutoWidth.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\bFilter.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\bInfiniteScroll.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\bInfo.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\bLengthChange.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\bPaginate.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\bProcessing.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\bServerSide.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\bSort.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\bSortClasses.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\fnCreatedCell.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\fnCreatedRow.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\fnDrawCallback.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\fnHeaderCallback.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\fnInitComplete.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\fnRowCallback.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\iDeferLoading.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\iDisplayLength.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\oLanguage.oPaginate.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\oLanguage.sInfo.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\oLanguage.sInfoEmpty.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\oLanguage.sInfoPostFix.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\oLanguage.sLengthMenu.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\oLanguage.sProcessing.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\oLanguage.sSearch.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\oLanguage.sUrl.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\oLanguage.sZeroRecords.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\oSearch.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\sAjaxDataProp.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\sAjaxSource.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\sDom.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\sPaginationType.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\4_server-side\_zero_config.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\aaSorting.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\aaSortingFixed.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.bSearchable.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.bSortable.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.bUseRendered.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.bVisible.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.fnRender.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.iDataSort.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.sClass.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.sName.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.sTitle.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\aoColumns.sWidth.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\aoSearchCols.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\asStripClasses.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\bAutoWidth.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\bFilter.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\bInfo.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\bLengthChange.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\bPaginate.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\bProcessing.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\bServerSide.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\bSort.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\bSortClasses.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\fnDrawCallback.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\fnHeaderCallback.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\fnInitComplete.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\fnRowCallback.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\fnServerData.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\iDisplayLength.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\oLanguage.oPaginate.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\oLanguage.sInfo.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\oLanguage.sInfoEmpty.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\oLanguage.sInfoPostFix.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\oLanguage.sLengthMenu.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\oLanguage.sProcessing.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\oLanguage.sSearch.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\oLanguage.sUrl.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\oLanguage.sZeroRecords.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\oSearch.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\sAjaxSource.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\sDom.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\sPaginationType.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\_zero_config.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\_zero_config_arrays_subobjects.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\_zero_config_deep.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\_zero_config_mDataProp.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\_zero_config_null_source.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\_zero_config_objects.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\5_ajax_objects\_zero_config_objects_subarrays.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\aaSorting.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\aaSortingFixed.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.bSearchable.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.bSortable.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.bUseRendered.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.bVisible.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.fnRender.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.iDataSort.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.sClass.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.sName.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.sTitle.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\aoColumns.sWidth.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\aoSearchCols.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\asStripClasses.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\bAutoWidth.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\bFilter.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\bInfo.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\bLengthChange.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\bPaginate.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\bProcessing.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\bServerSide.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\bSort.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\bSortClasses.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\fnDrawCallback.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\fnHeaderCallback.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\fnInitComplete.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\fnRowCallback.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\fnServerData.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\iDisplayLength.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\oLanguage.oPaginate.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\oLanguage.sInfo.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\oLanguage.sInfoEmpty.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\oLanguage.sInfoPostFix.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\oLanguage.sLengthMenu.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\oLanguage.sProcessing.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\oLanguage.sSearch.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\oLanguage.sUrl.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\oLanguage.sZeroRecords.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\oSearch.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\sAjaxDataProp.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\sAjaxDataProp2.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\sAjaxSource.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\sDom.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\sPaginationType.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\tests_onhold\6_delayed_rendering\_zero_config.js" />
+    <Content Include="Areas\assets\advanced-datatable\media\unit_testing\unit_test.js" />
+    <Content Include="Areas\assets\advanced-datatable\Readme.txt" />
+    <Content Include="Areas\assets\bootstrap-datepicker\css\datepicker.css" />
+    <Content Include="Areas\assets\bootstrap-datepicker\js\bootstrap-datepicker.js" />
+    <Content Include="Areas\assets\bootstrap-fileupload\bootstrap-fileupload.css" />
+    <Content Include="Areas\assets\bootstrap-fileupload\bootstrap-fileupload.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\bootstrap-wysihtml5.css" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\bootstrap-wysihtml5.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.ar-AR.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.bg-BG.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.ca-CT.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.cs-CZ.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.da-DK.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.de-DE.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.el-GR.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.es-AR.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.es-ES.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.fr-FR.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.hr-HR.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.it-IT.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.ja-JP.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.ko-KR.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.lt-LT.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.mo-MD.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.nb-NB.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.nl-NL.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.pl-PL.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.pt-BR.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.ru-RU.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.sk-SK.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.sv-SE.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.tr-TR.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.ua-UA.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.zh-CN.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.zh-TW.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\wysihtml5-0.3.0.js" />
+    <Content Include="Areas\assets\bootstrap-wysihtml5\wysiwyg-color.css" />
+    <Content Include="Areas\assets\data-tables\DT_bootstrap.css" />
+    <Content Include="Areas\assets\data-tables\DT_bootstrap.js" />
+    <Content Include="Areas\assets\data-tables\images\sort_asc.png" />
+    <Content Include="Areas\assets\data-tables\images\sort_both.png" />
+    <Content Include="Areas\assets\data-tables\images\sort_desc.png" />
+    <Content Include="Areas\assets\data-tables\jquery.dataTables.js" />
+    <Content Include="Areas\assets\fuelux\css\tree-conquer.css" />
+    <Content Include="Areas\assets\fuelux\css\tree.css" />
+    <Content Include="Areas\assets\fuelux\img\tree-icons.png" />
+    <Content Include="Areas\assets\fuelux\js\spinner.js" />
+    <Content Include="Areas\assets\fuelux\js\spinner.min.js" />
+    <Content Include="Areas\assets\fuelux\js\tree.js" />
+    <Content Include="Areas\assets\fuelux\js\tree.min.js" />
+    <Content Include="Areas\assets\jquery-file-upload\cors\postmessage.html" />
+    <Content Include="Areas\assets\jquery-file-upload\cors\result.html" />
+    <Content Include="Areas\assets\jquery-file-upload\css\jquery.fileupload-ui-noscript.css" />
+    <Content Include="Areas\assets\jquery-file-upload\css\jquery.fileupload-ui.css" />
+    <Content Include="Areas\assets\jquery-file-upload\css\style.css" />
+    <Content Include="Areas\assets\jquery-file-upload\img\loading.gif" />
+    <Content Include="Areas\assets\jquery-file-upload\img\progressbar.gif" />
+    <Content Include="Areas\assets\jquery-file-upload\index.html" />
+    <Content Include="Areas\assets\jquery-file-upload\js\app.js" />
+    <Content Include="Areas\assets\jquery-file-upload\js\cors\jquery.postmessage-transport.js" />
+    <Content Include="Areas\assets\jquery-file-upload\js\cors\jquery.xdr-transport.js" />
+    <Content Include="Areas\assets\jquery-file-upload\js\jquery.fileupload-angular.js" />
+    <Content Include="Areas\assets\jquery-file-upload\js\jquery.fileupload-audio.js" />
+    <Content Include="Areas\assets\jquery-file-upload\js\jquery.fileupload-fp.js" />
+    <Content Include="Areas\assets\jquery-file-upload\js\jquery.fileupload-image.js" />
+    <Content Include="Areas\assets\jquery-file-upload\js\jquery.fileupload-jquery-ui.js" />
+    <Content Include="Areas\assets\jquery-file-upload\js\jquery.fileupload-process.js" />
+    <Content Include="Areas\assets\jquery-file-upload\js\jquery.fileupload-ui.js" />
+    <Content Include="Areas\assets\jquery-file-upload\js\jquery.fileupload-validate.js" />
+    <Content Include="Areas\assets\jquery-file-upload\js\jquery.fileupload-video.js" />
+    <Content Include="Areas\assets\jquery-file-upload\js\jquery.fileupload.js" />
+    <Content Include="Areas\assets\jquery-file-upload\js\jquery.iframe-transport.js" />
+    <Content Include="Areas\assets\jquery-file-upload\js\main.js" />
+    <Content Include="Areas\assets\jquery-file-upload\js\vendor\canvas-to-blob.min.js" />
+    <Content Include="Areas\assets\jquery-file-upload\js\vendor\jquery.ui.widget.js" />
+    <Content Include="Areas\assets\jquery-file-upload\js\vendor\load-image.min.js" />
+    <Content Include="Areas\assets\jquery-file-upload\js\vendor\tmpl.min.js" />
+    <Content Include="Areas\assets\jquery-file-upload\server\gae-go\static\favicon.ico" />
+    <Content Include="Areas\assets\jquery-file-upload\server\gae-go\static\robots.txt" />
+    <Content Include="Areas\assets\jquery-file-upload\server\gae-python\main.py" />
+    <Content Include="Areas\assets\jquery-file-upload\server\gae-python\static\favicon.ico" />
+    <Content Include="Areas\assets\jquery-file-upload\server\gae-python\static\robots.txt" />
+    <Content Include="Areas\assets\jquery-file-upload\server\node\server.js" />
+    <Content Include="Areas\assets\jquery-file-upload\server\php\files\style-responsive.css" />
+    <Content Include="Areas\assets\jquery-file-upload\server\php\index.php" />
+    <Content Include="Areas\assets\jquery-file-upload\server\php\UploadHandler.php" />
+    <Content Include="Areas\assets\jquery-file-upload\test\index.html" />
+    <Content Include="Areas\assets\jquery-file-upload\test\test.js" />
+    <Content Include="Areas\Content\bootstrap-reset.css" />
+    <Content Include="Areas\Content\bootstrap.min.css" />
+    <Content Include="Areas\Content\font-awesome\css\font-awesome-ie7.css" />
+    <Content Include="Areas\Content\font-awesome\css\font-awesome-ie7.min.css" />
+    <Content Include="Areas\Content\font-awesome\css\font-awesome.css" />
+    <Content Include="Areas\Content\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Areas\Content\font-awesome\font\fontawesome-webfont.svg" />
+    <Content Include="Areas\Content\font-awesome\style-responsive.css" />
+    <Content Include="Areas\Content\font-awesome\style.css" />
+    <Content Include="Areas\Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Areas\Content\lightbox.min.css" />
+    <Content Include="Areas\Content\img\404_icon.png" />
+    <Content Include="Areas\Content\img\500_icon.png" />
+    <Content Include="Areas\Content\img\arrow-up.png" />
+    <Content Include="Areas\Content\img\avatar-mini.jpg" />
+    <Content Include="Areas\Content\img\avatar-mini2.jpg" />
+    <Content Include="Areas\Content\img\avatar-mini3.jpg" />
+    <Content Include="Areas\Content\img\avatar-mini4.jpg" />
+    <Content Include="Areas\Content\img\avatar1.jpg" />
+    <Content Include="Areas\Content\img\avatar1_small.jpg" />
+    <Content Include="Areas\Content\img\chart-texture.jpg" />
+    <Content Include="Areas\Content\img\chat-avatar.jpg" />
+    <Content Include="Areas\Content\img\chat-avatar2.jpg" />
+    <Content Include="Areas\Content\img\checkbox\check-off.png" />
+    <Content Include="Areas\Content\img\checkbox\check-on.png" />
+    <Content Include="Areas\Content\img\checkbox\radio-off.png" />
+    <Content Include="Areas\Content\img\checkbox\radio-on.png" />
+    <Content Include="Areas\Content\img\customSelect-arrow.gif" />
+    <Content Include="Areas\Content\img\file-search\ai.png" />
+    <Content Include="Areas\Content\img\file-search\doc.png" />
+    <Content Include="Areas\Content\img\file-search\email.png" />
+    <Content Include="Areas\Content\img\file-search\eps.png" />
+    <Content Include="Areas\Content\img\file-search\jpg.png" />
+    <Content Include="Areas\Content\img\file-search\pdf.png" />
+    <Content Include="Areas\Content\img\file-search\ppt.png" />
+    <Content Include="Areas\Content\img\file-search\psd.png" />
+    <Content Include="Areas\Content\img\file-search\rss.png" />
+    <Content Include="Areas\Content\img\file-search\xls.png" />
+    <Content Include="Areas\Content\img\file-search\zip.png" />
+    <Content Include="Areas\Content\img\flags\de.png" />
+    <Content Include="Areas\Content\img\flags\es.png" />
+    <Content Include="Areas\Content\img\flags\fr.png" />
+    <Content Include="Areas\Content\img\flags\ru.png" />
+    <Content Include="Areas\Content\img\flags\us.png" />
+    <Content Include="Areas\Content\img\follower-avatar.jpg" />
+    <Content Include="Areas\Content\img\gallery\1.jpg" />
+    <Content Include="Areas\Content\img\gallery\2.jpg" />
+    <Content Include="Areas\Content\img\gallery\3.jpg" />
+    <Content Include="Areas\Content\img\gallery\4.jpg" />
+    <Content Include="Areas\Content\img\gallery\5.jpg" />
+    <Content Include="Areas\Content\img\gallery\6.jpg" />
+    <Content Include="Areas\Content\img\gallery\7.jpg" />
+    <Content Include="Areas\Content\img\left-arrow.png" />
+    <Content Include="Areas\Content\img\lock-bg.jpg" />
+    <Content Include="Areas\Content\img\mail-avatar.jpg" />
+    <Content Include="Areas\Content\img\mask-square.png" />
+    <Content Include="Areas\Content\img\mask.png" />
+    <Content Include="Areas\Content\img\nav-expand.png" />
+    <Content Include="Areas\Content\img\pro-ac-1.png" />
+    <Content Include="Areas\Content\img\pro-ac-2.png" />
+    <Content Include="Areas\Content\img\product-list\pro-1.jpg" />
+    <Content Include="Areas\Content\img\product-list\pro-thumb-1.jpg" />
+    <Content Include="Areas\Content\img\product-list\pro-thumb-2.jpg" />
+    <Content Include="Areas\Content\img\product-list\pro-thumb-3.jpg" />
+    <Content Include="Areas\Content\img\product-list\pro-thumb-big.jpg" />
+    <Content Include="Areas\Content\img\product-list\pro1.jpg" />
+    <Content Include="Areas\Content\img\product-list\pro2.jpg" />
+    <Content Include="Areas\Content\img\product-list\pro3.jpg" />
+    <Content Include="Areas\Content\img\product1.jpg" />
+    <Content Include="Areas\Content\img\product2.png" />
+    <Content Include="Areas\Content\img\product3.png" />
+    <Content Include="Areas\Content\img\profile-avatar.jpg" />
+    <Content Include="Areas\Content\img\right-arrow.png" />
+    <Content Include="Areas\Content\img\ring.jpg" />
+    <Content Include="Areas\Content\img\search-icon.jpg" />
+    <Content Include="Areas\Content\img\sm-img-1.jpg" />
+    <Content Include="Areas\Content\img\sm-img-2.jpg" />
+    <Content Include="Areas\Content\img\sm-img-3.jpg" />
+    <Content Include="Areas\Content\img\vector-lab.jpg" />
+    <Content Include="Areas\Scripts\advanced-form-components.js" />
+    <Content Include="Areas\Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Scripts\common-scripts.js" />
+    <Content Include="Areas\Scripts\form-validation-script.js" />
+    <Content Include="Areas\Scripts\jquery.dcjqaccordion.2.7.js" />
+    <Content Include="Areas\Scripts\jquery.js" />
+    <Content Include="Areas\Scripts\jquery.nicescroll.js" />
+    <Content Include="Areas\Scripts\jquery.scrollTo.min.js" />
+    <Content Include="Areas\Scripts\jquery.validate.min.js" />
+    <Content Include="Areas\Scripts\lightbox-plus-jquery.min.js" />
+    <Content Include="Areas\Scripts\respond.min.js" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\Linearicons-Free.svg" />
+    <Content Include="fonts\weathericons-regular-webfont.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Category\AddCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\UpdateCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\ListCategory.cshtml" />
+    <Content Include="Areas\ColumnistProfile\Views\web.config" />
+    <Content Include="Areas\Admin\Views\AppUser\ListAppUser.cshtml" />
+    <Content Include="Areas\ColumnistProfile\Views\ColumnistProfile\ColumnistProfile.cshtml" />
+    <Content Include="Areas\Admin\Views\AppUser\AddAppUser.cshtml" />
+    <Content Include="Areas\Admin\Views\AppUser\UpdateAppUser.cshtml" />
+    <Content Include="Areas\Admin\Views\AppUser\BansAppUser.cshtml" />
+    <Content Include="Areas\EditorProfile\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Columnist\AddColumnist.cshtml" />
+    <Content Include="Areas\Admin\Views\Columnist\ListColumnist.cshtml" />
+    <Content Include="Areas\Admin\Views\Columnist\UpdateColumnist.cshtml" />
+    <Content Include="Areas\Admin\Views\AppUser\DeletedsUsers.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\DeletedsCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Columnist\DeletedsColumnist.cshtml" />
+    <Content Include="Areas\Admin\Views\Columnist\BansColumnist.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\weathericons-regular-webfont.eot" />
+    <Content Include="fonts\weathericons-regular-webfont.ttf" />
+    <Content Include="fonts\weathericons-regular-webfont.woff" />
+    <Content Include="fonts\weathericons-regular-webfont.woff2" />
+    <Content Include="Areas\Admin\Views\Editor\ListEditor.cshtml" />
+    <Content Include="Areas\MemberProfile\Views\MemberProfile\UpdatePassword.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\UpdatePassword.cshtml" />
+    <Content Include="Areas\EditorProfile\Views\EditorProfile\UpdatePassword.cshtml" />
+    <Content Include="Areas\ColumnistProfile\Views\ColumnistProfile\UpdatePassword.cshtml" />
+    <Content Include="Areas\Admin\Views\AppUser\UpdateAppUserPassword.cshtml" />
+    <Content Include="Areas\Admin\Views\Columnist\UpdateColumnistPassword.cshtml" />
+    <Content Include="Areas\Admin\Views\Editor\UpdateEditorPassword.cshtml" />
+    <Content Include="Areas\Admin\Views\Article\DetailArticle.cshtml" />
+    <Content Include="Areas\EditorProfile\Views\EditorArticle\DetailArticle.cshtml" />
+    <Content Include="Areas\EditorProfile\Views\EditorNews\DetailNews.cshtml" />
+    <Content Include="Pictures\Site\cubes.png" />
+    <Content Include="Pictures\Site\IDefaultProfile.png" />
+    <Content Include="Pictures\Site\defaultpicture.png" />
+    <Content Include="Pictures\Site\about-img.jpg" />
+    <Content Include="Pictures\Site\banner-ad.jpg" />
+    <Content Include="Pictures\Site\ico.ico" />
+    <Content Include="Pictures\Site\Infobox.png" />
+    <Content Include="libman.json" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Areas\Admin\Views\Editor\AddEditor.cshtml" />
+    <Content Include="Areas\Admin\Views\Editor\UpdateEditor.cshtml" />
+    <Content Include="Areas\Admin\Views\Editor\DeletedsEditor.cshtml" />
+    <Content Include="Areas\Admin\Views\Editor\BansEditor.cshtml" />
+    <Content Include="Areas\Admin\Views\Article\AddArticle.cshtml" />
+    <Content Include="Areas\Admin\Views\Article\ListArticle.cshtml" />
+    <Content Include="Areas\Admin\Views\Article\DeletedsArticle.cshtml" />
+    <Content Include="Areas\Admin\Views\Article\UpdateArticle.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\News\ListNews.cshtml" />
+    <Content Include="Areas\Admin\Views\News\AddNews.cshtml" />
+    <Content Include="Areas\Admin\Views\News\UpdateNews.cshtml" />
+    <Content Include="Areas\Admin\Views\News\DeletedsNews.cshtml" />
+    <Content Include="fonts\OpenSans\OpenSans-Bold.ttf" />
+    <Content Include="fonts\OpenSans\OpenSans-BoldItalic.ttf" />
+    <Content Include="fonts\OpenSans\OpenSans-ExtraBold.ttf" />
+    <Content Include="fonts\OpenSans\OpenSans-ExtraBoldItalic.ttf" />
+    <Content Include="fonts\OpenSans\OpenSans-Italic.ttf" />
+    <Content Include="fonts\OpenSans\OpenSans-Light.ttf" />
+    <Content Include="fonts\OpenSans\OpenSans-LightItalic.ttf" />
+    <Content Include="fonts\OpenSans\OpenSans-Regular.otf" />
+    <Content Include="fonts\OpenSans\OpenSans-Regular.ttf" />
+    <Content Include="fonts\OpenSans\OpenSans-SemiBold.ttf" />
+    <Content Include="fonts\OpenSans\OpenSans-SemiBoldItalic.ttf" />
+    <Content Include="Areas\Admin\Views\News\DetailNews.cshtml" />
+    <Content Include="fonts\Linearicons-Free.eot" />
+    <Content Include="fonts\Linearicons-Free.ttf" />
+    <Content Include="fonts\Linearicons-Free.woff" />
+    <Content Include="fonts\Linearicons-Free.woff2" />
+    <Content Include="Areas\MemberProfile\Views\web.config" />
+    <Content Include="Areas\MemberProfile\Views\MemberProfile\MemberProfile.cshtml" />
+    <Content Include="Areas\EditorProfile\Views\Shared\EditorAreaLayout.cshtml" />
+    <Content Include="Areas\EditorProfile\Views\EditorProfile\Index.cshtml" />
+    <Content Include="Areas\EditorProfile\Views\EditorNews\ListNews.cshtml" />
+    <Content Include="Areas\EditorProfile\Views\EditorNews\UpdateNews.cshtml" />
+    <Content Include="Areas\EditorProfile\Views\EditorArticle\ListArticle.cshtml" />
+    <Content Include="Areas\EditorProfile\Views\EditorArticle\UpdateArticle.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\AdminProfile.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\AdminAreaLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\UpdateProfile.cshtml" />
+    <Content Include="Areas\ColumnistProfile\Views\ColumnistProfile\UpdateProfile.cshtml" />
+    <Content Include="Areas\EditorProfile\Views\EditorProfile\EditorProfile.cshtml" />
+    <Content Include="Areas\EditorProfile\Views\EditorProfile\UpdateProfile.cshtml" />
+    <Content Include="Areas\MemberProfile\Views\MemberProfile\UpdateProfile.cshtml" />
+    <Content Include="Areas\MemberProfile\Views\Shared\MemberAreaLayout.cshtml" />
+    <Content Include="Areas\ColumnistProfile\Views\Shared\ColumnistAreaLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\Log\LogList.cshtml" />
+    <Content Include="Pictures\Site\mka.jpg" />
+    <Content Include="Pictures\Site\news-default.jpg" />
+    <Content Include="Pictures\Site\org1.jpg" />
+    <Content Include="Pictures\Site\Error.jpg" />
+    <Content Include="Pictures\Site\play-btn.png" />
+    <Content Include="Pictures\Site\play-icon.png" />
+    <Content Include="Scripts\animsition.min.js" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\cldr.js" />
+    <Content Include="Scripts\cldr\event.js" />
+    <Content Include="Scripts\cldr\supplemental.js" />
+    <Content Include="Scripts\cldr\unresolved.js" />
+    <Content Include="Scripts\cookiealert.js" />
+    <Content Include="Scripts\countdowntime.js" />
+    <Content Include="Scripts\daterangepicker.js" />
+    <Content Include="Scripts\easing.min.js" />
+    <Content Include="Scripts\globalize.js" />
+    <Content Include="Scripts\globalize\currency.js" />
+    <Content Include="Scripts\globalize\date.js" />
+    <Content Include="Scripts\globalize\message.js" />
+    <Content Include="Scripts\globalize\number.js" />
+    <Content Include="Scripts\globalize\plural.js" />
+    <Content Include="Scripts\globalize\relative-time.js" />
+    <Content Include="Scripts\hoverIntent.js" />
+    <Content Include="Areas\Content\font-awesome\font\fontawesome-webfont.eot" />
+    <Content Include="Areas\Content\font-awesome\font\fontawesome-webfont.ttf" />
+    <Content Include="Areas\Content\font-awesome\font\fontawesome-webfont.woff" />
+    <Content Include="Areas\Content\font-awesome\font\FontAwesome.otf" />
+    <Content Include="Areas\Content\font-awesome\less\bootstrap.less" />
+    <Content Include="Areas\Content\font-awesome\less\core.less" />
+    <Content Include="Areas\Content\font-awesome\less\extras.less" />
+    <Content Include="Areas\Content\font-awesome\less\font-awesome-ie7.less" />
+    <Content Include="Areas\Content\font-awesome\less\font-awesome.less" />
+    <Content Include="Areas\Content\font-awesome\less\icons.less" />
+    <Content Include="Areas\Content\font-awesome\less\mixins.less" />
+    <Content Include="Areas\Content\font-awesome\less\path.less" />
+    <Content Include="Areas\Content\font-awesome\less\variables.less" />
+    <Content Include="Areas\Content\font-awesome\scss\font-awesome-ie7.scss" />
+    <Content Include="Areas\Content\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Areas\Content\font-awesome\scss\_bootstrap.scss" />
+    <Content Include="Areas\Content\font-awesome\scss\_core.scss" />
+    <Content Include="Areas\Content\font-awesome\scss\_extras.scss" />
+    <Content Include="Areas\Content\font-awesome\scss\_icons.scss" />
+    <Content Include="Areas\Content\font-awesome\scss\_mixins.scss" />
+    <Content Include="Areas\Content\font-awesome\scss\_path.scss" />
+    <Content Include="Areas\Content\font-awesome\scss\_variables.scss" />
+    <Content Include="Areas\assets\advanced-datatable\component.json" />
+    <Content Include="Areas\assets\advanced-datatable\docs\media\license\Syntax Highlighter" />
+    <Content Include="Areas\assets\advanced-datatable\examples\examples_support\syntax\license\Syntax Highlighter" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\media\docs\media\license\Syntax Highlighter" />
+    <Content Include="Areas\assets\advanced-datatable\extras\AutoFill\media\js\AutoFill.min.js.gz" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\media\docs\media\license\Syntax Highlighter" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColReorder\media\js\ColReorder.min.js.gz" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\media\docs\media\license\Syntax Highlighter" />
+    <Content Include="Areas\assets\advanced-datatable\extras\ColVis\media\js\ColVis.min.js.gz" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\docs\media\license\Syntax Highlighter" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedColumns\media\js\FixedColumns.min.js.gz" />
+    <Content Include="Areas\assets\advanced-datatable\extras\FixedHeader\js\FixedHeader.min.js.gz" />
+    <Content Include="Areas\assets\advanced-datatable\extras\KeyTable\js\KeyTable.min.js.gz" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\media\docs\media\license\Syntax Highlighter" />
+    <Content Include="Areas\assets\advanced-datatable\extras\Scroller\media\js\dataTables.scroller.min.js.gz" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\as3\lib\AlivePDF.swc" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\as3\ZeroClipboard.as" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\as3\ZeroClipboardPdf.as" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\images\psd\collection.psd" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\images\psd\copy document.psd" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\images\psd\file_types.psd" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\images\psd\printer.psd" />
+    <Content Include="Areas\assets\advanced-datatable\extras\TableTools\media\js\TableTools.min.js.gz" />
+    <Content Include="Areas\assets\advanced-datatable\media\images\Sorting icons.psd" />
+    <Content Include="Areas\assets\advanced-datatable\package.json" />
+    <Content Include="Areas\assets\advanced-datatable\scripts\jshint.config" />
+    <Content Include="Areas\assets\advanced-datatable\scripts\make.sh" />
+    <Content Include="Areas\assets\advanced-datatable\scripts\unit_tests.sh" />
+    <Content Include="Areas\assets\fuelux\COPYING" />
+    <Content Include="Areas\assets\fuelux\README.md" />
+    <Content Include="Areas\assets\jquery-file-upload\.gitignore" />
+    <Content Include="Areas\assets\jquery-file-upload\blueimp-file-upload.jquery.json" />
+    <Content Include="Areas\assets\jquery-file-upload\CONTRIBUTING.md" />
+    <Content Include="Areas\assets\jquery-file-upload\package.json" />
+    <Content Include="Areas\assets\jquery-file-upload\README.md" />
+    <Content Include="Areas\assets\jquery-file-upload\server\gae-go\app.yaml" />
+    <Content Include="Areas\assets\jquery-file-upload\server\gae-go\app\main.go" />
+    <Content Include="Areas\assets\jquery-file-upload\server\gae-python\app.yaml" />
+    <Content Include="Areas\assets\jquery-file-upload\server\node\.gitignore" />
+    <Content Include="Areas\assets\jquery-file-upload\server\node\package.json" />
+    <Content Include="Areas\assets\jquery-file-upload\server\node\public\files\thumbnail\.gitignore" />
+    <Content Include="Areas\assets\jquery-file-upload\server\node\tmp\.gitignore" />
+    <Content Include="Areas\assets\jquery-file-upload\server\php\files\.htaccess" />
+    <Content Include="Areas\Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Areas\Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Areas\Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Areas\assets\bootstrap-datepicker\less\datepicker.less" />
+    <Content Include="Areas\EditorProfile\Views\EditorNews\DeletedsNews.cshtml" />
+    <Content Include="Areas\EditorProfile\Views\EditorArticle\DeletedsArticle.cshtml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <None Include="Scripts\jquery-1.8.0.intellisense.js" />
+    <Content Include="Scripts\jquery-1.8.0.js" />
+    <Content Include="Scripts\jquery-1.8.0.min.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery.ajaxchimp.min.js" />
+    <Content Include="Scripts\jquery.magnific-popup.min.js" />
+    <Content Include="Scripts\jquery.nice-select.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.globalize.js" />
+    <Content Include="Scripts\jquery.validate.globalize.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\LogoTypeJS.js" />
+    <Content Include="Scripts\mail-script.js" />
+    <Content Include="Scripts\main2.js" />
+    <Content Include="Scripts\mn-accordion.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\owl.carousel.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\select2.min.js" />
+    <Content Include="Scripts\superfish.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AppUserController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ArticleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ColumnistController.cs" />
+    <Compile Include="Areas\Admin\Controllers\EditorController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LogController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
+    <Compile Include="Areas\ColumnistProfile\ColumnistProfileAreaRegistration.cs" />
+    <Compile Include="Areas\ColumnistProfile\Controllers\ColumnistProfileController.cs" />
+    <Compile Include="Areas\EditorProfile\Controllers\EditorArticleController.cs" />
+    <Compile Include="Areas\EditorProfile\Controllers\EditorNewsController.cs" />
+    <Compile Include="Areas\EditorProfile\Controllers\EditorProfileController.cs" />
+    <Compile Include="Areas\EditorProfile\EditorProfileAreaRegistration.cs" />
+    <Compile Include="Areas\MemberProfile\Controllers\MemberProfileController.cs" />
+    <Compile Include="Areas\MemberProfile\MemberProfileAreaRegistration.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Models\AuthenticationClasses\AdminAuthentication.cs" />
+    <Compile Include="Models\AuthenticationClasses\ColumnistAuthentication.cs" />
+    <Compile Include="Models\AuthenticationClasses\EditorAuthentication.cs" />
+    <Compile Include="Models\AuthenticationClasses\MemberAuthentication.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MemberController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Filters\ActFilter.cs" />
+    <Compile Include="Models\Filters\ResFilter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <None Include="packages.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\IForgot.cshtml" />
+    <Content Include="Views\Member\NewsList.cshtml" />
+    <Content Include="Views\Member\AboutUs.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Member\ArticleList.cshtml" />
+    <Content Include="Views\Member\DetailsArticle.cshtml" />
+    <Content Include="Views\Member\ListColumnist.cshtml" />
+    <Content Include="Views\Member\DetailsColumnist.cshtml" />
+    <Content Include="Views\Home\RegisterOk.cshtml" />
+    <Content Include="Views\Member\SelectbyCategory.cshtml" />
+    <Content Include="Views\Home\ResetOk.cshtml" />
+    <Content Include="Views\Home\NewPassword.cshtml" />
+    <Content Include="Views\Member\DetailsNews.cshtml" />
+    <Content Include="Views\Member\_SonDakika.cshtml" />
+    <Content Include="Views\Error\PageNotFound.cshtml" />
+    <Content Include="Views\Member\Search.cshtml" />
+    <Content Include="Views\Member\ListVideo.cshtml" />
+    <Content Include="Views\Member\_VideoList.cshtml" />
+    <Content Include="Views\Shared\_HomeLayout.cshtml" />
+    <Content Include="Views\Shared\_SearchResult.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\assets\jquery-file-upload\server\php\files\thumbnail\" />
+    <Folder Include="Areas\ColumnistProfile\Models\" />
+    <Folder Include="Areas\EditorProfile\Models\" />
+    <Folder Include="Areas\MemberProfile\Models\" />
+    <Folder Include="Models\MyEntities\" />
+    <Folder Include="OuterTool\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Project.BLL\Project.BLL.csproj">
+      <Project>{094A5394-BB6D-4007-97F8-6D61FC6316A2}</Project>
+      <Name>Project.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project.DAL\Project.DAL.csproj">
+      <Project>{EC02FD7C-84F4-4BDF-BF73-F76D6ABC3BFB}</Project>
+      <Name>Project.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project.MODEL\Project.MODEL.csproj">
+      <Project>{9039F17A-6665-4C8A-ACE7-0A1B27C9E9F8}</Project>
+      <Name>Project.MODEL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project.TOOLUI\Project.TOOLUI.csproj">
+      <Project>{A3E18C16-E8B7-495D-BA5E-0A315F4BBA9A}</Project>
+      <Name>Project.TOOLUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project.VIEWMODEL\Project.VIEWMODEL.csproj">
+      <Project>{517bd91a-44c1-47f5-967a-22e71f10ec5e}</Project>
+      <Name>Project.VIEWMODEL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>63265</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:63265/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,82 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<Log>
+
+<script>
+    $(document).ready(function () {
+        $("#SearchBtn").click(function () {
+            var SearchBy = $("#SearchBy").val();
+            var SearchValue = $("#Search").val();
+            var SetData = $("#DataSearching");
+            SetData.html("")
+            $.ajax({
+                type: "post",
+                url: "/Admin/Log/GetSearchingData?SearchBy=" + SearchBy + "&SearchValue=" + SearchValue,
+                contentType: "html",
+                success: function (result) {
+                    if (result.lenght == 0) {
+                        SetData.append('<tr style="color:red"><td colspan="3">Eşleşme Bulunamadı</td></tr>')
+                    }
+                    else {
+                        $.each(result, function (index, value) {
+                            var Data =
+                                "<div class='row'>" +
+                                 "<table class='table table-hover'>" + "<tr class='success'>" + "<td>" + value.ID + "</td> " + "<td>" + value.WhoIs + "</td>" + "<td>" + value.ActionName + "</td>" + "<td>" + value.ControllorName + "</td>" + "<td>" + value.Information + "</td>" + "<td>" + value.Description + "</td>" + "<td>" + value.IPAdress + "</td>" + "<td>" + value.CreatedDate + "</td>" + "<td>" + value.UrlAccessed + "</td>" + "</tr>" + "</table> </div>"; SetData.append(Data);
+                        });
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+<div class="container">
+    <b>Arama :</b>
+    <select id="SearchBy">
+        <option value="İsim">İsim</option>
+        <option value="ID">ID</option>
+    </select> <br /> <br />
+    @Html.TextBox("Search")<input type="submit" id="SearchBtn" value="Ara" /> <br /> <br />
+
+    <div class="row">
+        <div>
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Kullanıcı Adı</th>
+                        <th>Action Adı</th>
+                        <th>Controller Adı</th>
+                        <th>Bilgi</th>
+                        <th>Açıklama</th>
+                        <th>IP Adresi</th>
+                        <th>Oluşturulma Tarihi</th>
+                        <th>Url Erişimi</th>
+                    </tr>
+                </thead>
+
+                <tbody id="DataSearching">
+                    @foreach (Log item in Model)
+                    {
+                        <tr class="success">
+                            <td>@item.ID</td>
+                            <td>@item.WhoIs</td>
+                            <td>@item.ActionName</td>
+                            <td>@item.ControllorName</td>
+                            <td>@item.Information</td>
+                            <td>@item.Description</td>
+                            <td>@item.IPAdress</td>
+                            <td>@item.CreatedDate</td>
+                            <td>@item.UrlAccessed</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <br />
+        <hr />
+        <div class="col-md-12 text-center">
+            @Html.PagedListPager(Model, sayfa => Url.Action("LogList", "Log", new { sayfa }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions { UpdateTargetId = "LogListesi" }))
+        </div>
+    </div>
+</div>

@@ -1,0 +1,95 @@
+﻿@model Tuple<Article, List<Columnist>, List<Category>>
+@{
+    ViewBag.Title = "AddArticle";
+    Layout = "~/Areas/Admin/Views/Shared/AdminAreaLayout.cshtml";
+}
+<head>
+    <title>Yazı Ekleme</title>
+</head>
+<!-- page start-->
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                Yeni Köşe Yazısı
+            </header>
+            <div class="panel-body">
+                <div class="form">
+                    @using (Html.BeginForm("AddArticle", "Article", FormMethod.Post, new { enctype = "multipart/form-data", @class = "cmxform form-horizontal tasi-form" }))
+                    {
+
+                        <div class="form-group ">
+                            <label for="firstname" class="control-label col-lg-2">Yazar Seçin:</label>
+                            <div class="col-lg-10">
+                                @Html.DropDownListFor(x => x.Item1.ColumnistID, new SelectList(Model.Item2, "id", "FullName"), "Lütfen Seçim Yapınız", new { @class = "btn btn-white dropdown-toggle", style = "height:35px;width:200px" })
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="lastname" class="control-label col-lg-2">Kategori Seçin:</label>
+                            <div class="col-lg-10">
+                                @Html.DropDownListFor(x => x.Item1.CategoryID, new SelectList(Model.Item3, "id", "CategoryName"), "Lütfen Seçim Yapınız", new { @class = "btn btn-white dropdown-toggle", style = "height:35px;width:200px" })
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="lastname" class="control-label col-lg-2">Başlık:</label>
+                            <div class="col-lg-10">
+                                @Html.TextBoxFor(x => x.Item1.Title, new { @class = "form-control", style = "height:25px;width:200px" })
+                                @Html.ValidationMessageFor(x => x.Item1.Title)
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="lastname" class="control-label col-lg-2">Özet:</label>
+                            <div class="col-lg-10">
+                                @Html.TextAreaFor(x => x.Item1.Summary, new { style = "height:25px;width:200px" }) @Html.ValidationMessageFor(x => x.Item1.Summary)
+                            </div>
+                        </div>
+
+
+                        <div class="form-group ">
+                            <label for="lastname" class="control-label col-lg-2">Haber Gövdesi:</label>
+                            <div class="col-lg-10">
+                                @Html.TextAreaFor(x => x.Item1.Content, new { style = "height:25px;width:200px" }) @Html.ValidationMessageFor(x => x.Item1.Content)
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="lastname" class="control-label col-lg-2">Alıntı:</label>
+                            <div class="col-lg-10">
+                                @Html.TextAreaFor(x => x.Item1.Quotation, new { style = "height:25px;width:200px" }) @Html.ValidationMessageFor(x => x.Item1.Quotation)
+                            </div>
+                        </div>
+                        <div class="form-group last">
+                            <label for="lastname" class="control-label col-lg-2">Resim Yükle:</label>
+                            <div class="col-md-9">
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                    <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                    </div>
+                                    <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                    <div>
+                                        <span class="btn btn-white btn-file">
+                                            <span class="fileupload-new"><i class="icon-paper-clip"></i> Resim Seç</span>
+                                            <span class="fileupload-exists"><i class="icon-undo"></i> Değiştir</span>
+                                            <input type="file" class="default" name="resim"/>
+                                        </span>
+                                        <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="icon-trash"></i> Sil</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <button class="btn btn-danger" type="submit">Ekle</button>
+                                @Html.ActionLink("İptal Et", "ListArticle", null, new { @class = "btn btn-default" })
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- page end-->

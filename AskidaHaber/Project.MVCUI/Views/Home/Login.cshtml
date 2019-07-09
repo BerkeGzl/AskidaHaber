@@ -1,0 +1,73 @@
+﻿@model AppUser
+@{
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Askıda Haber Giriş</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    @if (TempData["Basarili"] != null)
+    {
+        <div class="jumbotron" align="center">
+            <h2 style="color:red">@TempData["Basarili"] </h2>
+        </div>
+
+    }
+    @if (ViewBag.Message != null)
+    {
+        <div class="jumbotron" align="center"> 
+            <h2 style="color:red">@ViewBag.Message</h2>
+        </div>
+    }
+    @if (ViewBag.Banli != null)
+    {
+        <div class="jumbotron" align="center">
+            <h2 style="color:red">@ViewBag.Banli</h2>
+        </div>
+    }
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100 p-b-160 p-t-50">
+
+                @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "login100-form validate-form" }))
+                {
+
+                    <span class="login100-form-title p-b-43">
+                        Hesap Girişi
+                    </span>
+                    <div class="wrap-input100 rs1 validate-input" data-validate="Username is required">
+                        @Html.TextBoxFor(x => x.UserName, new { placeholder = "Kullanıcı Adı", @class = "input100", name = "username" }) @Html.ValidationMessageFor(x => x.UserName)
+                    </div>
+
+                    <div class="wrap-input100 rs2 validate-input" data-validate="Password is required">
+                        @Html.TextBoxFor(x => x.Password, new { placeholder = "Şifre", @class = "input100", name = "pass" }) @Html.ValidationMessageFor(x => x.Password)
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            Giriş Yap
+                        </button>
+
+                        <div style="color:white">@Html.CheckBox("Hatirla", true) Beni Hatırla!</div>
+                    </div>
+
+
+                    <div class="text-center w-full p-t-23">
+                        @Html.ActionLink("Hesap Oluşturun", "Register", "Home", new { style = "color:white", @class = "txt1" })
+                    </div>
+                    <div class="text-center w-full p-t-23">
+                        @Html.ActionLink("Şifremi Unuttum?", "IForgot", "Home", new { style = "color:white", @class = "txt1" })
+                    </div>
+
+                }
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

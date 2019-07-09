@@ -1,0 +1,44 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<News>
+
+
+    <div class="container">
+        @foreach (News item in Model)
+        {
+            <div class="col-sm-4 col-lg-4 col-md-4">
+                <div class="thumbnail">
+                    <h6 class="tags" align="center">
+                        @Html.ActionLink(@item.Category.CategoryName, "SelectbyCategory", new { category = Url.FriendlyURLTitle(item.Category.CategoryName), id = item.CategoryID }, new { style = "color:red" })
+                    </h6> <br />
+                    @if (item.ImagePath == "Dosya Boş")
+                    {
+                        <video width="320" height="240" controls align="center" class="img-responsive">
+                            <source src="~/Pictures/Site/news-default.jpg" type="video/mp4">
+                            <source src="~/Pictures/Site/news-default.jpg" type="video/ogg">
+                            Tarayıcınız video tag desteklemiyor.
+                        </video>
+                    }
+                    else
+                    {
+                        <video width="320" height="240" controls align="center" class="img-responsive">
+                            <source src="@item.VideoPath" type="video/mp4">
+                            <source src="@item.VideoPath" type="video/ogg">
+                            Tarayıcınız video tag desteklemiyor.
+                        </video>
+                    }
+                    <div class="caption">
+                        <h4>@Html.ActionLink(item.Title, "DetailsNews", "Member", new { category = Url.FriendlyURLTitle(item.Category.CategoryName), Title = Url.FriendlyURLTitle(item.Title), id = item.ID, catID = item.CategoryID }, new { style = "color:black" })</h4>
+
+                    </div>
+                    <p class="excert">
+                        @item.Summary
+                    </p>
+                </div>
+            </div>
+
+        }
+        <div class="col-md-12 text-center">
+            @Html.PagedListPager(Model, sayfa => Url.Action("ListVideo", "Member", new { sayfa }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions { UpdateTargetId = "VideoListesi" }))
+        </div>
+    </div>

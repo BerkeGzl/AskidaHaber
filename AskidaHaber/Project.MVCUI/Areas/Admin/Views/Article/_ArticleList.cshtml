@@ -1,0 +1,62 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<Article>
+
+<div class="container">
+    <div class="row">
+        <div>
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Resim</th>
+                        <th>#</th>
+                        <th>Başlık</th>
+                        <th>Özet</th>
+                        <th>Gövde</th>
+                        <th>Yazarı</th>
+                        <th>Kategorisi</th>
+                        <th>Durumu</th>
+                    </tr>
+                </thead>
+
+                <tbody id="myTable">
+                    @foreach (Article item in Model)
+                    {
+                    <tr class="success">
+                        @if (item.ImagePath == "Dosya Boş")
+                        {
+                            <td><img src="~/Pictures/Site/news-default.jpg" style="width:50px;height:50px" /></td>
+                        }
+                        else
+                        {
+                            <td><img src="@item.ImagePath" style="width:50px;height:50px" /></td>
+                        }
+                        <td>@item.ID</td>
+                        <td>@item.Title</td>
+                        <td>@item.Summary</td>
+                        <td>@Html.ActionLink("Detay", "DetailArticle", "Article", new { id = item.ID }, new { @class = "btn btn-success" })</td>
+                        <td>@item.Columnist.FullName</td>
+                        @if (item.Category == null)
+                        {
+                            <td>Kategorisi Yok</td>
+                        }
+                        else
+                        {
+                            <td>@item.Category.CategoryName</td>
+                        }
+                        <td>@item.Status</td>
+                        <td>@Html.ActionLink("Güncelle", "UpdateArticle", "Article", new { id = item.ID }, new { @class = "btn btn-warning" })</td>
+                        <td>@Html.ActionLink("Sil", "DeleteArticle", "Article", new { id = item.ID }, new { @class = "btn btn-danger" })</td>
+                        <td>@Html.ActionLink("Sil+", "SpecialDeleteArticle", "Article", new { id = item.ID }, new { @class = "btn btn-info" })</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <br />
+        <hr />
+        <div class="col-md-12 text-center">
+            @Html.PagedListPager(Model, sayfa => Url.Action("ListArticle", "Article", new { sayfa }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions { UpdateTargetId = "YaziListesi" }))
+        </div>
+    </div>
+</div>

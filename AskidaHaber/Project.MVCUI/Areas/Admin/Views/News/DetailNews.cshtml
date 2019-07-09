@@ -1,0 +1,94 @@
+﻿@model  Tuple<News, List<Comment>>
+@{
+    ViewBag.Title = "DetailNews";
+    Layout = "~/Areas/Admin/Views/Shared/AdminAreaLayout.cshtml";
+}
+
+<head>
+    <title>Haber Detayı</title>
+</head>
+
+
+<div class="row">
+    <div class="col-md-9">
+        <section class="panel">
+            <div class="panel-body">
+                <div class="col-md-6">
+                    <div class="pro-img-details">
+                        @if (Model.Item1.ImagePath == "Dosya Boş")
+                        {
+                            <img src="~\Pictures\Site\news-default.jpg" /> <br />
+                        }
+                        else
+                        {
+                            <img src="@Model.Item1.ImagePath" /> <br />
+                        }
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4 class="pro-d-title">
+                        Başlık: @Model.Item1.Title
+                    </h4>
+                    <p>
+                        Özet: @Model.Item1.Summary
+                    </p>
+                    <div class="product_meta">
+                        <span class="posted_in"> <strong>Kategorisi:</strong> <a rel="tag" href="#">@Model.Item1.Category.CategoryName</a></span>
+                    </div>
+                    <p>
+                        @Html.ActionLink("Güncelle", "UpdateNews", new { id = Model.Item1.ID }, new { @class = "btn btn-round btn-success" })
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel">
+            <header class="panel-heading tab-bg-dark-navy-blue">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a data-toggle="tab" href="#description">
+                            Gövde
+                        </a>
+                    </li>
+                </ul>
+            </header>
+            <div class="panel-body" align="center">
+                <div class="tab-content tasi-tab">
+                    <div id="description" class="tab-pane active">
+                        <h4 class="pro-d-head">Gövde</h4>
+                        <p>@Model.Item1.Content </p>
+                        <hr />
+                        <h4 class="pro-d-head">Alıntı</h4>
+                        <p> @Model.Item1.Quotation </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <div class="panel panel-default">
+            <div class="panel panel-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Kullanıcı Adı</th>
+                            <th>Adı ve Soyadı</th>
+                            <th>Yorumu</th>
+                        </tr>
+                    </thead>
+                    @foreach (Comment item in Model.Item2)
+                    {
+                        <tbody>
+                            <tr>
+                                <td>@item.AppUser.UserName</td>
+                                <td>@item.AppUser.FullName</td>
+                                <td>@item.Text</td>
+                                <td>@Html.ActionLink("Sil", "DeleteCommentNews", "News", new { idd = item.ID, aid = Model.Item1.ID }, new { @class = "btn btn-danger" })</td>
+                            </tr>
+                        </tbody>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

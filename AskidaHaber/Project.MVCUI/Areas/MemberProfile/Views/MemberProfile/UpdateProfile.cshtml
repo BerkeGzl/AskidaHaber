@@ -1,0 +1,131 @@
+﻿@model AppUser
+@{
+    ViewBag.Title = "UpdateProfile";
+    Layout = Layout = "~/Areas/MemberProfile/Views/Shared/MemberAreaLayout.cshtml";
+}
+
+<head>
+    <title>Kullanıcı Profil Güncelleme</title>
+</head>
+
+<!-- page start-->
+<div class="row">
+    <aside class="profile-nav col-lg-3">
+        <section class="panel">
+            <div class="user-heading round">
+                @if (Model.ImagePath == "Dosya Boş" || Model.ImagePath == null)
+                {
+                    <a href="#">
+                        <img src="~/Pictures/Site/IDefaultProfile.png" alt="" />
+                    </a>
+                }
+                else
+                {
+                    <a href="#">
+                        <img src="@Model.ImagePath" alt="">
+                    </a>
+                }
+                <h1>@Model.FullName</h1>
+                <p>@Model.Email</p>
+            </div>
+
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="@Url.Action("MemberProfile", "MemberProfile", new { id = Model.ID })"> <i class="icon-user"></i> Profil</a></li>
+                <li><a href="@Url.Action("UpdatePassword", "MemberProfile", new { id = Model.ID })"> <i class="icon-edit"></i> Şifre Değiştir </a></li>
+                <li><a href="@Url.Action("UpdateProfile", "MemberProfile", new { id = Model.ID })"> <i class="icon-edit"></i>Profil Düzenle</a></li>
+            </ul>
+
+        </section>
+    </aside>
+    <aside class="profile-info col-lg-9">
+        <section class="panel">
+            <div class="bio-graph-heading">
+                @Model.AboutDescription
+            </div>
+
+            <div class="panel-body bio-graph-info">
+                <h1 align="center"> Profil Bilgileri</h1>
+                @using (Html.BeginForm("UpdateProfile", "MemberProfile", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+                {
+                    @Html.HiddenFor(x => x.ID)
+                    @Html.HiddenFor(x => x.Password)
+                    @Html.HiddenFor(x => x.BirthDate)
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">Hakkımda</label>
+                        <div class="col-lg-10">
+                            @Html.TextAreaFor(x => x.AboutDescription, new { @class = "form-control", cols = "30", rows = "10" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">Kullanıcı Adı</label>
+                        <div class="col-lg-6">
+                            @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.UserName)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">İsim</label>
+                        <div class="col-lg-6">
+                            @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.FirstName)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">Soyad</label>
+                        <div class="col-lg-6">
+                            @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.LastName)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">E-Posta</label>
+                        <div class="col-lg-6">
+                            @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Email)
+                        </div>
+                    </div>
+
+                    @*<div class="form-group">
+                            <label class="control-label col-lg-2">Doğum Tarihi:</label>
+                            <div class="col-md-3 col-xs-11">
+
+                                <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="12-02-2012" class="input-append date dpYears">
+                                    @Html.TextBoxFor(x => x.BirthDate, new { @class = "form-control", value = "12-02-2012", size = "16", @readonly = "" })
+
+
+                                    <span class="input-group-btn add-on">
+                                        <button class="btn btn-danger" type="button"><i class="icon-calendar"></i></button>
+                                    </span>
+                                </div>
+                                <span class="help-block">Tarih Seç</span>
+                                @Html.ValidationMessageFor(x => x.BirthDate)
+                            </div>
+                        </div>*@
+
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">Cinsiyet</label>
+                        <div class="col-lg-6">
+                            @Html.EnumDropDownListFor(x => x.Gender, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Gender)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">Resim Değiştir</label>
+                        <div class="col-lg-6">
+                            <input type="file" class="file-pos" id="exampleInputFile" name="resim">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <button type="submit" class="btn btn-success">Güncelle</button>
+                            @Html.ActionLink("İptal", "MemberProfile", new { id = Model.ID }, new { @class = "btn btn-default" })
+                        </div>
+                    </div>
+                }
+            </div>
+        </section>
+    </aside>
+</div>
+<!-- page end-->

@@ -1,0 +1,6 @@
+C:\Users\Berke\source\repos\AskidaHaber\Project.MODEL\bin\Debug\Project.MODEL.dll
+C:\Users\Berke\source\repos\AskidaHaber\Project.MODEL\bin\Debug\Project.MODEL.pdb
+C:\Users\Berke\source\repos\AskidaHaber\Project.MODEL\obj\Debug\Project.MODEL.csprojAssemblyReference.cache
+C:\Users\Berke\source\repos\AskidaHaber\Project.MODEL\obj\Debug\Project.MODEL.csproj.CoreCompileInputs.cache
+C:\Users\Berke\source\repos\AskidaHaber\Project.MODEL\obj\Debug\Project.MODEL.dll
+C:\Users\Berke\source\repos\AskidaHaber\Project.MODEL\obj\Debug\Project.MODEL.pdb

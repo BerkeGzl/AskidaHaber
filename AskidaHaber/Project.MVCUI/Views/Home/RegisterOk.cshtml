@@ -1,0 +1,50 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+<title>Yönlendiriliyor...</title>
+
+<head>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <link href="~/Content/LoadingCSS.css" rel="stylesheet" />
+
+</head>
+<!------ Include the above in your HEAD tag ---------->
+
+<body style="background-color:royalblue">
+    <section>
+        <div class="main-context">
+            <div class="text-success">
+                <div class="jumbotron" align="center">
+                    <h2>
+                        Tebrikler Başarıyla Kayıt Oldunuz...
+                        E-Posta adresinize gönderilen linke tıklayarak hesabınızı aktif edebilirsiniz.
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div id="circle">
+            <div class="loader">
+                <div class="loader">
+                    <div class="loader">
+                        <div class="loader">
+                        </div>
+                    </div>
+                </div>
+                <h3>Yönlendiriliyorsunuz...</h3>
+            </div>
+
+        </div>
+    </section>
+</body>
+
+
+<script>
+    $(function () {
+        setTimeout(function () {
+            window.location.href='@Url.Action("Login","Home")'
+        }, 10000)
+    });
+</script>

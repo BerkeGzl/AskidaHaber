@@ -1,0 +1,24 @@
+﻿@model Category
+@{
+    ViewBag.Title = "UpdateCategory";
+    Layout = "~/Areas/Admin/Views/Shared/AdminAreaLayout.cshtml";
+}
+<head>
+    <title>Kategori Güncelleme</title>
+</head>
+<div class="panel panel-default">
+    <div class="panel panel-body" align="center">
+        @using (Html.BeginForm("UpdateCategory", "Category", FormMethod.Post))
+        {
+            @Html.HiddenFor(x => x.ID)
+            <div>Kategori Adı:</div>
+            <div>@Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control", style = "height:25px;width:200px" }) @Html.ValidationMessageFor(x => x.CategoryName)</div><br />
+            <div>Kategori Açıklaması:</div>
+            <div>@Html.TextBoxFor(x => x.Description, new { @class = "form-control", style = "height:25px;width:200px" }) @Html.ValidationMessageFor(x => x.Description)</div> <br />
+            <div>Kategori Durumu:</div>
+            <div>@Html.EnumDropDownListFor(x => x.Status, new { @class = "form-control", style = "height:30px;width:200px" })</div><br />
+            <button class="btn btn-primary">Güncelle</button>
+        }
+    </div>
+</div>
+

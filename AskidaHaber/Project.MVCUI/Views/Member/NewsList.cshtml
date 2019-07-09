@@ -1,0 +1,301 @@
+﻿@model  NewsVM
+@{
+    ViewBag.Title = "NewsList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>Askıda Haber</title>
+</head>
+<body>
+    <div class="site-main-container">
+        <!-- Start top-post Area -->
+        <section class="top-post-area pt-10">
+            <div class="container no-padding">
+                <div class="row small-gutters">
+                    @foreach (News item in Model.gundem.Take(1))
+                    {
+                        <div class="col-lg-8 top-post-left">
+                            <div class="feature-image-thumb relative">
+                                <div class="overlay overlay-bg"></div>
+                                @if (item.ImagePath == "Dosya Boş")
+                                {
+                                    <img class="img-fluid" src="~\Pictures\Site\news-default.jpg" alt="" style="height:597px">
+                                }
+                                else
+                                {
+                                    <img class="img-fluid" src="@item.ImagePath" alt="" style="height:597px">
+                                }
+                            </div>
+                            <div class="top-post-details">
+                                <ul class="tags">
+                                    <li>@Html.ActionLink(@item.Category.CategoryName, "SelectbyCategory", new { category = Url.FriendlyURLTitle(item.Category.CategoryName), id = item.CategoryID })</li>
+                                </ul>
+                                <h3>
+                                    @Html.ActionLink(item.Title, "DetailsNews", "Member", new { category = Url.FriendlyURLTitle(item.Category.CategoryName), Title = Url.FriendlyURLTitle(item.Title), id = item.ID, catID = item.CategoryID }, new { style = "color:white" })
+                                </h3>
+                            </div>
+                        </div>
+                    }
+
+                    @foreach (News item in Model.gundem.Take(2))
+                    {
+                        <div class="col-lg-4 top-post-right">
+                            <div class="single-top-post">
+                                <div class="feature-image-thumb relative">
+                                    <div class="overlay overlay-bg"></div>
+                                    @if (item.ImagePath == "Dosya Boş")
+                                    {
+                                        <img class="img-fluid" src="~/Pictures/Site/news-default.jpg" />
+                                    }
+                                    else
+                                    {
+                                        <img class="img-fluid" src="@item.ImagePath" />
+                                    }
+                                </div>
+                                <div class="top-post-details">
+                                    <ul class="tags">
+                                        <li>@Html.ActionLink(@item.Category.CategoryName, "SelectbyCategory", new { id = item.CategoryID })</li>
+                                    </ul>
+                                    <h4>
+                                        @Html.ActionLink(item.Title, "DetailsNews", "Member", new { category = Url.FriendlyURLTitle(item.Category.CategoryName), Title = Url.FriendlyURLTitle(item.Title), id = item.ID, catID = item.CategoryID }, new { style = "color:white" })
+                                    </h4>
+                                </div>
+                            </div> <br />
+                        </div>
+                    }
+
+                    @{
+                        @Html.Action("SonDakika");
+                    }
+                </div>
+            </div>
+        </section>
+        <!-- End top-post Area -->
+        <!-- Start latest-post Area -->
+        <section class="latest-post-area pb-120">
+            <div class="container no-padding">
+                <div class="row">
+                    <div class="col-lg-8 post-list">
+                        <!-- Start latest-post Area -->
+
+                        <div class="popular-post-wrap">
+                            <h4 class="title">Son Haberler</h4>
+
+                            <div class="row mt-20 medium-gutters">
+                                @foreach (News item in Model.karisik.Take(15))
+                                {
+
+                                    <div class="col-lg-6 single-popular-post">
+                                        <div class="feature-img-wrap relative">
+                                            <div class="feature-img relative">
+                                                <div class="overlay overlay-bg"></div>
+                                                @if (item.ImagePath == "Dosya Boş")
+                                                {
+                                                    <img class="img-fluid" src="~/Pictures/Site/news-default.jpg" style="height:200px; width:400px" />
+                                                }
+                                                else
+                                                {
+                                                    <img class="img-fluid" src="@item.ImagePath" style="height:200px; width:400px" />
+                                                }
+                                            </div>
+                                            <ul class="tags">
+                                                <li>@Html.ActionLink(@item.Category.CategoryName, "SelectbyCategory", new { id = item.CategoryID })</li>
+                                            </ul>
+                                        </div>
+                                        <div class="details" style="color:black">
+                                            <h4>
+                                                @Html.ActionLink(item.Title, "DetailsNews", "Member", new { category = Url.FriendlyURLTitle(item.Category.CategoryName), Title = Url.FriendlyURLTitle(item.Title), id = item.ID, catID = item.CategoryID }, new { style = "color:black" })
+                                            </h4>
+
+                                            <p class="excert">
+                                                @item.Summary
+                                            </p> <hr />
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <!-- End latest-post Area -->
+                        <!-- Start popular-post Area -->
+                        <div class="popular-post-wrap">
+                            <h4 class="title">Magazin</h4>
+                            <div class="row mt-20 medium-gutters">
+                                @foreach (News item in Model.magazin.Take(15))
+                                {
+                                    <div class="col-lg-6 single-popular-post">
+                                        <div class="feature-img-wrap relative">
+                                            <div class="feature-img relative">
+                                                <div class="overlay overlay-bg"></div>
+                                                @if (item.ImagePath == "Dosya Boş")
+                                                {
+                                                    <img class="img-fluid" src="~/Pictures/Site/news-default.jpg" style="height:200px; width:400px" />
+                                                }
+                                                else
+                                                {
+                                                    <img class="img-fluid" src="@item.ImagePath" style="height:200px; width:400px" />
+                                                }
+                                            </div>
+                                            <ul class="tags">
+                                                <li>@Html.ActionLink(@item.Category.CategoryName, "SelectbyCategory", new { id = item.CategoryID })</li>
+                                            </ul>
+                                        </div>
+                                        <div class="details">
+                                            <h4>@Html.ActionLink(item.Title, "DetailsNews", "Member", new { category = Url.FriendlyURLTitle(item.Category.CategoryName), Title = Url.FriendlyURLTitle(item.Title), id = item.ID, catID = item.CategoryID }, new { style = "color:black" })</h4>
+                                            <p class="excert">
+                                                @item.Summary
+                                            </p> <hr />
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <!-- End popular-post Area -->
+                        <!-- Start relavent-story-post Area -->
+                        <div class="popular-post-wrap">
+                            <h4 class="title">Ekonomi</h4>
+                            <div class="row mt-20 medium-gutters">
+                                @foreach (News item in Model.ekonomi.Take(15))
+                                {
+                                    <div class="col-lg-6 single-popular-post">
+                                        <div class="feature-img-wrap relative">
+                                            <div class="feature-img relative">
+                                                <div class="overlay overlay-bg"></div>
+                                                @if (item.ImagePath == "Dosya Boş")
+                                                {
+                                                    <img class="img-fluid" src="~/Pictures/Site/news-default.jpg" style="height:200px; width:400px" />
+                                                }
+                                                else
+                                                {
+                                                    <img class="img-fluid" src="@item.ImagePath" style="height:200px; width:400px" />
+                                                }
+                                            </div>
+                                            <ul class="tags">
+                                                <li>@Html.ActionLink(@item.Category.CategoryName, "SelectbyCategory", new { id = item.CategoryID })</li>
+                                            </ul>
+                                        </div>
+                                        <div class="details">
+                                            <h4>@Html.ActionLink(item.Title, "DetailsNews", "Member", new { category = Url.FriendlyURLTitle(item.Category.CategoryName), Title = Url.FriendlyURLTitle(item.Title), id = item.ID, catID = item.CategoryID }, new { style = "color:black" })</h4>
+                                            <p class="excert">
+                                                @item.Summary
+                                            </p><hr />
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <!-- End relavent-story-post Area -->
+                        <!-- Start relavent-story-post Area -->
+                        @*<div class="popular-post-wrap">
+                                <h4 class="title">Sağlık</h4>
+                                <div class="row mt-20 medium-gutters">
+                                    @foreach (News item in Model.saglik.Take(10))
+                                    {
+                                        <div class="col-lg-6 single-popular-post">
+                                            <div class="feature-img-wrap relative">
+                                                <div class="feature-img relative">
+                                                    <div class="overlay overlay-bg"></div>
+                                                    <img class="img-fluid" src="@item.ImagePath" alt="" style="height:200px; width:400px">
+                                                </div>
+                                                <ul class="tags">
+                                                    <li>@Html.ActionLink(@item.Category.CategoryName, "SelectbyCategory", new { id = item.CategoryID })</li>
+                                                </ul>
+                                            </div>
+                                            <div class="details">
+                                                <h4>@Html.ActionLink(item.Title, "DetailsNews", "Member", new { id = item.ID, catID = item.CategoryID }, new { style = "color:black" })</h4>
+                                                <p class="excert">
+                                                    @item.Summary
+                                                </p> <hr />
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>*@
+                        <!-- End relavent-story-post Area -->
+
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="sidebars-area">
+                            <div class="single-sidebar-widget editors-pick-widget">
+                                <h6 class="title">Dünya</h6>
+                                @foreach (News item in Model.dunya.Take(12))
+                                {
+                                    <div class="editors-pick-post">
+                                        <div class="feature-img-wrap relative">
+                                            <div class="feature-img relative">
+                                                <div class="overlay overlay-bg"></div>
+                                                @if (item.ImagePath == "Dosya Boş")
+                                                {
+                                                    <img class="img-fluid" src="~/Pictures/Site/news-default.jpg" />
+                                                }
+                                                else
+                                                {
+                                                    <img class="img-fluid" src="@item.ImagePath" />
+                                                }
+                                            </div>
+                                            <ul class="tags">
+                                                <li>@Html.ActionLink(item.Category.CategoryName, "SelectbyCategory", new { id = item.CategoryID })</li>
+                                            </ul>
+                                        </div><br />
+                                        <div class="details">
+                                            <h4>@Html.ActionLink(item.Title, "DetailsNews", "Member", new { category = Url.FriendlyURLTitle(item.Category.CategoryName), Title = Url.FriendlyURLTitle(item.Title), id = item.ID, catID = item.CategoryID }, new { style = "color:black" })</h4>
+                                            <p class="excert">
+                                                @item.Summary
+                                            </p>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+
+                            <div class="single-sidebar-widget most-popular-widget">
+                                <h6 class="title">Sağlık</h6>
+                                @foreach (News item in Model.saglik.Take(12))
+                                {
+                                    <div class="editors-pick-post">
+                                        <div class="feature-img-wrap relative">
+                                            <div class="feature-img relative">
+                                                <div class="overlay overlay-bg"></div>
+                                                @if (item.ImagePath == "Dosya Boş")
+                                                {
+                                                    <img class="img-fluid" src="~/Pictures/Site/news-default.jpg" />
+                                                }
+                                                else
+                                                {
+                                                    <img class="img-fluid" src="@item.ImagePath" />
+                                                }
+                                            </div>
+                                            <ul class="tags">
+                                                <li>@Html.ActionLink(item.Category.CategoryName, "SelectbyCategory", new { id = item.CategoryID })</li>
+                                            </ul>
+                                        </div><br />
+                                        <div class="details">
+                                            <h4>@Html.ActionLink(item.Title, "DetailsNews", "Member", new { category = Url.FriendlyURLTitle(item.Category.CategoryName), Title = Url.FriendlyURLTitle(item.Title), id = item.ID, catID = item.CategoryID }, new { style = "color:black" })</h4>
+                                            <p class="excert">
+                                                @item.Summary
+                                            </p>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End latest-post Area -->
+    </div>
+</body>
+</html>
+
+
+

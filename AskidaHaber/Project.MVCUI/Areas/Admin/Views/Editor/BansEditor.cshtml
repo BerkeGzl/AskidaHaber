@@ -1,0 +1,140 @@
+﻿@model List<Editor>
+@{
+    ViewBag.Title = "BansEditor";
+    Layout = "~/Areas/Admin/Views/Shared/AdminAreaLayout.cshtml";
+}
+
+<head>
+    <title>Banlı Editörler</title>
+</head>
+
+<!-- page start-->
+<section class="panel">
+    <header class="panel-heading">
+        Banlı Editör Listesi
+    </header>
+    <div class="panel-body">
+        <div class="adv-table">
+            <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Resmi</th>
+                        <th>Kullanıcı Adı</th>
+                        <th>İsmi</th>
+                        <th>Soyismi</th>
+                        <th>Cinsiyeti</th>
+                        <th>E-Posta</th>
+                        <th>Doğum Tarihi</th>
+                        <th>Ban Durumu</th>
+                        <th>Durumu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Editor item in Model)
+                    {
+                        <tr class="gradeX">
+                            <td>@item.ID</td>
+                            @if (item.ImagePath == "Dosya Boş" || item.ImagePath == null)
+                            {
+                                <td align="center">
+                                    <a href="~/Pictures/Site/IDefaultProfile.png" class="example-image-link" data-lightbox="example-1">
+                                        <img src="~/Pictures/Site/IDefaultProfile.png" width="100" height="30" />
+                                    </a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td align="center">
+                                    <a href="@item.ImagePath" class="example-image-link" data-lightbox="example-1">
+                                        <img src="@item.ImagePath" width="100" height="30" />
+                                    </a>
+                                </td>
+                            }
+                            <td>@item.UserName</td>
+                            <td>@item.FirstName</td>
+                            <td>@item.LastName</td>
+                            <td>@item.Gender</td>
+                            <td>@item.Email</td>
+                            @if (item.BirthDate == null)
+                            {
+                                <td>Doğum Tarihi Yok</td>
+                            }
+                            else
+                            {
+                                <td>@item.BirthDate.Value.ToShortDateString()</td>
+                            }
+                            <th>@item.IsBanned</th>
+                            <td>@item.Status</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</section>
+<!-- page end-->
+
+<script type="text/javascript">
+    /* Formating function for row details */
+    function fnFormatDetails(oTable, nTr) {
+        var aData = oTable.fnGetData(nTr);
+        var sOut = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
+        sOut += '<tr><td>Editör Ekle:</td><td><a href="/admin/editor-ekle" class="btn btn-success">Ekle </a></td></tr>';
+        sOut += '<tr><td>Editör Güncelle:</td><td><a href="/admin/editor-guncelle/' + aData[1] + ' "class="btn btn-warning">Güncelle </a></td></tr>';
+        sOut += '<tr><td>Editör Sil:</td><td><a href="/admin/editor-sil/' + aData[1] + ' "class="btn btn-danger">Sil </a></td></tr>';
+        sOut += '<tr><td>Editör Sil+:</td><td><a href="/admin/editor-s-sil/' + aData[1] + ' "class="btn btn-info">Sil+ </a></td></tr>';
+        sOut += '</table>';
+
+        return sOut;
+    }
+
+    $(document).ready(function () {
+        /*
+         * Insert a 'details' column to the table
+         */
+        var nCloneTh = document.createElement('th');
+        var nCloneTd = document.createElement('td');
+        nCloneTd.innerHTML = '<img src="/Areas/assets/advanced-datatable/examples/examples_support/details_open.png">';
+        nCloneTd.className = "center";
+
+        $('#hidden-table-info thead tr').each(function () {
+            this.insertBefore(nCloneTh, this.childNodes[0]);
+        });
+
+        $('#hidden-table-info tbody tr').each(function () {
+            this.insertBefore(nCloneTd.cloneNode(true), this.childNodes[0]);
+        });
+
+        /*
+         * Initialse DataTables, with no sorting on the 'details' column
+         */
+        var oTable = $('#hidden-table-info').dataTable({
+            "aoColumnDefs": [
+                { "bSortable": false, "aTargets": [0] }
+            ],
+            "aaSorting": [[1, 'asc']]
+        });
+
+        /* Add event listener for opening and closing details
+         * Note that the indicator for showing which row is open is not controlled by DataTables,
+         * rather it is done here
+         */
+        $('#hidden-table-info tbody td img').live('click', function () {
+            var nTr = $(this).parents('tr')[0];
+            if (oTable.fnIsOpen(nTr)) {
+                /* This row is already open - close it */
+                this.src = "/Areas/assets/advanced-datatable/examples/examples_support/details_open.png";
+                oTable.fnClose(nTr);
+            }
+            else {
+                /* Open this row */
+                this.src = "/Areas/assets/advanced-datatable/examples/examples_support/details_close.png";
+                oTable.fnOpen(nTr, fnFormatDetails(oTable, nTr), 'details');
+            }
+        });
+    });
+</script>
+
+

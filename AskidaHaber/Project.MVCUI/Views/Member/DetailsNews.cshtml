@@ -1,0 +1,235 @@
+﻿@model Tuple<News, List<News>, List<Comment>, Comment>
+@{
+    ViewBag.Title = "DetailsNews";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>@Model.Item1.Title</title>
+
+
+
+    <script>
+        function showHide() {
+            var x = document.getElementById("visibleDiv");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="site-main-container">
+        <!-- Start top-post Area -->
+        <section class="top-post-area pt-10">
+            <div class="container no-padding">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="hero-nav-area">
+                            <p class="text-white link-nav">@Html.ActionLink("Ana Sayfa", "NewsList", "Member", new { @class = "menu-active" })  <span class="lnr lnr-arrow-right"></span>@Html.ActionLink(Model.Item1.Category.CategoryName, "SelectbyCategory", new {category= Url.FriendlyURLTitle(Model.Item1.Category.CategoryName), id = Model.Item1.CategoryID }, new { @class = "menu-active" })<span class="lnr lnr-arrow-right"></span>@Html.ActionLink("Detay", "ArticleList", "Member", new { @class = "menu-active" })</p>
+                        </div>
+                    </div>
+                    @{
+                        @Html.Action("SonDakika");
+                    }
+                </div>
+            </div>
+        </section>
+        <!-- End top-post Area -->
+        <!-- Start latest-post Area -->
+        <section class="latest-post-area pb-120">
+            <div class="container no-padding">
+                <div class="row">
+                    <div class="col-lg-8 post-list">
+                        <!-- Start single-post Area -->
+                        <div class="single-post-wrap">
+
+                            <ul class="meta pb-20">
+                                <li><span class="lnr lnr-calendar-full"></span>@Model.Item1.CreatedDate</li>
+                                <li><span class="lnr lnr-bubble"></span>@Model.Item1.Comments.Count</li>
+                                @if (Session["editor"] != null)
+                                {
+                                    <li>@Html.ActionLink("Düzenle", "UpdateNews", new { area = "EditorProfile", controller = "EditorNews", id = Model.Item1.ID })</li>
+                                }
+                                @if (Session["admin"] != null)
+                                {
+                                    <li>@Html.ActionLink("Düzenle", "UpdateNews", new { area = "Admin", controller = "News", id = Model.Item1.ID })</li>
+                                }
+                            </ul>
+                            <div class="feature-img-thumb relative">
+                                <div class="overlay overlay-bg"></div>
+                                @if (Model.Item1.ImagePath == "Dosya Boş")
+                                {
+                                    <img class="img-fluid" src="~/Pictures/Site/news-default.jpg" />
+                                }
+                                else
+                                {
+                                    <img class="img-fluid" src="@Model.Item1.ImagePath" />
+                                }
+                            </div>
+                            <div class="content-wrap">
+                                <h1>@Html.ActionLink(Model.Item1.Title, "DetailsNews", new { category = Url.FriendlyURLTitle(Model.Item1.Category.CategoryName), Title = Url.FriendlyURLTitle(Model.Item1.Title), id = Model.Item1.ID, catID = Model.Item1.CategoryID }, new { style = "color:black" })</h1>
+
+                                <h3>@Model.Item1.Summary</h3>
+                                <p>
+                                    @Model.Item1.Content
+                                </p>
+                                @if (Model.Item1.Quotation != null)
+                                {
+                                    <blockquote>@Model.Item1.Quotation</blockquote>
+
+                                }
+
+
+
+                            <div align="center">
+                                @if (Model.Item1.VideoPath != "Dosya Boş" && Model.Item1.VideoPath != null)
+                                {
+                                    <video width="320" height="240" controls align="center">
+                                        <source src="@Model.Item1.VideoPath" type="video/mp4">
+                                        <source src="@Model.Item1.VideoPath" type="video/ogg">
+                                        Tarayıcınız video tag desteklemiyor.
+                                    </video>
+                                }
+
+                                <hr />
+
+
+                                @if (Session["member"] != null || Session["admin"] != null)
+                                {
+                            <div class="comment-form">
+                                <h4>Yorum Yap</h4>
+                                @using (Html.BeginForm("AppUserNewsComment", "Member", FormMethod.Post))
+                                {
+                                    @Html.HiddenFor(x => x.Item1.ID)
+                                    @Html.HiddenFor(x => x.Item1.CategoryID)
+                                    @Html.HiddenFor(x => x.Item1.Title)
+                                    @Html.HiddenFor(x => x.Item1.Category.CategoryName)
+                                    <div class="form-group">
+                                        @Html.TextAreaFor(x => x.Item4.Text, new { @class = "form-control mb-10", rows = "5", name = "message", placeholder = "Mesaj", onfocus = "this.placeholder = ''", onblur = "this.placeholder = 'Mesaj'", required = "" })
+                                    </div>
+                                    <button class="primary-btn text-uppercase">Yorum Yap</button>
+                                }
+                            </div>
+                                }
+                                else if(Session["columnist"] == null && Session["editor"] == null)
+                                {
+                                    <div class="jumbotron" align="center">
+                                        <h4>
+                                            Yorum Yapmak İçin
+                                            @Html.ActionLink("Üye Ol", "Register", new { Controller = "Home" }, new { style = "color:red" }) |
+                                            @Html.ActionLink("Üye Girişi", "Login", new { Controller = "Home" }, new { style = "color:red" })
+                                        </h4>
+                                    </div>
+                                }
+
+                                <h6>Yorum Sayısı: @Model.Item1.Comments.Count</h6>
+                                <div align="center"><button onclick="showHide()" class="btn btn-danger">Yorumları Göster / Gizle...</button></div>
+                                <div class="comment-sec-area">
+                                    <div class="container" style="width:650px">
+                                        <div id="visibleDiv" style="display: none">
+                                            <div class="row flex-column">
+
+                                                @foreach (Comment item in Model.Item3)
+                                                {
+                                                    <div class="comment-list">
+                                                        <div class="single-comment justify-content-between d-flex">
+                                                            <div class="user justify-content-between d-flex">
+                                                                <div class="thumb">
+                                                                    @*<img src="@item.AppUser.ImagePath" alt="" style="width:50px;height:50px" />*@
+                                                                </div>
+                                                                <div class="desc">
+                                                                    <h5>@item.AppUser.FullName</h5>
+                                                                    <p class="date">@item.CreatedDate </p>
+                                                                    <p class="comment">
+                                                                        @item.Text
+                                                                    </p>
+
+                                                                    @if (Session["editor"] != null)
+                                                                    {
+                                                                        @Html.ActionLink("Yorumu Sil", "DeleteNewsComment", new { area = "EditorProfile", controller = "EditorNews", cid = item.ID, aid = Model.Item1.ID, caid = Model.Item1.CategoryID }, new { style = "color:red" })
+                                                                    }
+                                                                    else if (Session["admin"] != null)
+                                                                    {
+                                                                        @Html.ActionLink("Yorumu Sil", "DeleteNewsComment", new { area = "Admin", controller = "News", cid = item.ID, aid = Model.Item1.ID, caid = Model.Item1.CategoryID }, new { style = "color:red" })
+                                                                    }
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            </div>
+                            <!-- End single-post Area -->
+                        </div>
+                        <!-- End single-post Area -->
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="sidebars-area">
+                            <div class="single-sidebar-widget editors-pick-widget">
+                                <h6 class="title">@Model.Item1.Category.CategoryName</h6>
+                                @foreach (News item in Model.Item2.Take(5))
+                                {
+                                    <div class="editors-pick-post">
+                                        <div class="feature-img-wrap relative">
+                                            <div class="feature-img relative">
+                                                <div class="overlay overlay-bg"></div>
+                                                @if (item.ImagePath == "Dosya Boş")
+                                                {
+                                                    <img class="img-fluid" src="~/Pictures/Site/news-default.jpg"/>
+                                                }
+                                                else
+                                                {
+                                                    <img class="img-fluid" src="@item.ImagePath"/>
+                                                }
+                                            </div>
+                                            <ul class="tags">
+                                                <li>@Html.ActionLink(item.Category.CategoryName, "SelectbyCategory", new {id = item.CategoryID})</li>
+                                            </ul>
+                                        </div>
+                                        <div class="details">
+                                            <h4 class="mt-20">
+                                                @item.Title
+                                            </h4>
+                                            <ul class="meta">
+                                                <li>
+                                                    @Html.ActionLink(item.Title, "DetailsNews", "Member", new { category = Url.FriendlyURLTitle(item.Category.CategoryName), Title = Url.FriendlyURLTitle(item.Title), id = item.ID, catID = item.CategoryID }, new { style = "color:black" })
+                                                </li>
+                                                <li><span class="lnr lnr-calendar-full"></span>@item.CreatedDate</li>
+                                                <li><span class="lnr lnr-bubble"></span>@Model.Item1.Comments.Count</li>
+                                            </ul>
+                                            <p class="excert">
+                                                @item.Summary
+                                            </p>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End latest-post Area -->
+    </div>
+</body>
+</html>

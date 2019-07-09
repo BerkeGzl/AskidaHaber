@@ -1,0 +1,43 @@
+﻿@model AppUser
+@{
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Askıda Haber Şifre mi Unuttum!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+
+<body>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100 p-b-160 p-t-50">
+
+                @using (Html.BeginForm("IForgot", "Home", FormMethod.Post, new { @class = "login100-form validate-form" }))
+                {
+
+                    <span class="login100-form-title p-b-43">
+                        Şifre mi Unuttum!
+                    </span>
+                    <div class="wrap-input100 rs1 validate-input" data-validate="Username is required">
+                        @Html.TextBoxFor(x => x.UserName, new { placeholder = "Kullanıcı Adı", @class = "input100", name = "username" }) @Html.ValidationMessageFor(x => x.UserName)
+                    </div>
+
+                    <div class="wrap-input100 rs2 validate-input" data-validate="Password is required">
+                        @Html.TextBoxFor(x => x.Email, new { placeholder = "E-Posta", @class = "input100" }) @Html.ValidationMessageFor(x => x.Email)
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            Gönder
+                        </button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>

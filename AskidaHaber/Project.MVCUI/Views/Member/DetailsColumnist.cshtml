@@ -1,0 +1,129 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model Tuple<IPagedList<Article>, List<Article>, List<Columnist>>
+@{
+    ViewBag.Title = "ArticleList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>Yazarlar</title>
+</head>
+
+<body>
+    <div class="site-main-container">
+        <!-- Start top-post Area -->
+        <section class="top-post-area pt-10">
+            <div class="container no-padding">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="hero-nav-area">
+                            <h1 class="text-white">Yazar Yazıları</h1>
+                            <p class="text-white link-nav">@Html.ActionLink("Ana Sayfa", "NewsList", "Member", new { @class = "menu-active" }) <span class="lnr lnr-arrow-right"></span>@Html.ActionLink("Yazılar", "ArticleList", "Member")<span class="lnr lnr-arrow-right"></span>@Html.ActionLink("Yazar Yazıları", "ArticleList", "Member")</p>
+                        </div>
+                    </div>
+                    @{
+                        @Html.Action("SonDakika");
+                    }
+                </div>
+            </div>
+        </section>
+        <!-- End top-post Area -->
+        <!-- Start latest-post Area -->
+        <section class="latest-post-area pb-120">
+            <div class="container no-padding">
+                <div class="row">
+                    <div class="col-lg-8 post-list">
+                        <!-- Start latest-post Area -->
+                        <div class="latest-post-wrap">
+                            <h4 class="cat-title">Yazılar</h4>
+                            @foreach (Article item in Model.Item1.Take(10))
+                            {
+                                <div class="single-latest-post row align-items-center">
+                                    <div class="col-lg-5 post-left">
+                                        <div class="feature-img relative">
+                                            <div class="overlay overlay-bg"></div>
+                                            @if (item.ImagePath == "Dosya Boş")
+                                            {
+                                                <img class="img-fluid" src="~/Pictures/Site/news-default.jpg" alt="" />
+                                            }
+                                            else
+                                            {
+                                                <img class="img-fluid" src="@item.ImagePath" alt="">
+                                            }
+
+                                        </div>
+                                        <ul class="tags">
+                                            <li>@item.Category.CategoryName</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-7 post-right">
+                                        <h4 style="color:black">@Html.ActionLink(item.Title, "DetailsArticle", "Member", new { category = @Url.FriendlyURLTitle(item.Category.CategoryName), Title = @Url.FriendlyURLTitle(item.Title), id = item.ID, catID = item.CategoryID }, new { style = "color:black" })</h4>
+
+                                        <ul class="meta">
+                                            <li>@Html.ActionLink(item.Columnist.FullName, "DetailsColumnist", "Member", new { FirstName = @Url.FriendlyURLTitle(item.Columnist.FirstName), LastName = @Url.FriendlyURLTitle(item.Columnist.LastName), id = item.ColumnistID }, new { @class = "lnr lnr-user" })</li>
+                                            <li><span class="lnr lnr-calendar-full"></span>@item.CreatedDate</li>
+                                        </ul>
+                                        <p class="excert">
+                                            @item.Summary
+                                        </p>
+                                    </div>
+                                </div>
+                            }
+                        <div class="load-more">
+                            <div class="pagedList">
+                                @Html.PagedListPager(Model.Item1, _sayfa => Url.Action("DetailsColumnist", "Member", new { sayfa = _sayfa }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+                            </div>
+                        </div>
+
+                        </div>
+                        <!-- End latest-post Area -->
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="sidebars-area">
+                            <div class="single-sidebar-widget editors-pick-widget">
+                                <h6 class="title">Yazarlar</h6>
+                                <table class="table table-hover">
+                                    @foreach (Columnist item in Model.Item3.Take(10))
+                                    {
+                                        <tr>
+                                            @if (item.ImagePath == "Dosya Boş" || item.ImagePath == null)
+                                            {
+                                                <td><img class="img-fluid" src="~/Pictures/Site/IDefaultProfile.png" alt="" style="width:100px; height:80px"> </td>
+                                            }
+                                            else
+                                            {
+                                                <td><img class="img-fluid" src="@item.ImagePath" alt="" style="width:100px; height:80px"> </td>
+                                            }
+
+                                            <td>@Html.ActionLink(item.FullName, "DetailsColumnist", "Member", new { FirstName = @Url.FriendlyURLTitle(item.FirstName), LastName = @Url.FriendlyURLTitle(item.LastName), id = item.ID }, new { style = "color:black" })</td>
+                                            <td>
+                                                <ul class="tags">
+                                                    <li>@Html.ActionLink("Yazarlar", "ListColumnist", "Member", new { @class = "btn btn-danger" })</li>
+                                                </ul>
+                                            </td>
+
+                                        </tr>
+                                    }
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End latest-post Area -->
+    </div>
+</body>
+</html>

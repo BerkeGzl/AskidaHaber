@@ -1,0 +1,11 @@
+﻿@model List<News>
+
+
+@foreach (News item in Model.Take(1))
+{
+    <div class="col-lg-12">
+        <div class="news-tracker-wrap">
+            <h6><span>Son Dakika:</span>  @Html.ActionLink(item.Title, "DetailsNews", "Member", new { category= @Url.FriendlyURLTitle(item.Category.CategoryName),Title= @Url.FriendlyURLTitle(item.Title) ,id = item.ID, catID = item.CategoryID }, new { style = "color:black" })</h6>
+        </div>
+    </div>
+}

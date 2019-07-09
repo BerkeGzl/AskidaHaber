@@ -1,0 +1,149 @@
+﻿@model AppUser
+@{
+    ViewBag.Title = "UpdateAppUser";
+    Layout = "~/Areas/Admin/Views/Shared/AdminAreaLayout.cshtml";
+}
+
+
+<head>
+
+    <title>Kullanıcı Güncelleme</title>
+
+</head>
+<h2 style="color:red">@ViewBag.Tarih</h2>
+
+<!-- page start-->
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                Kullanıcı Güncelle
+            </header>
+            <div class="panel-body">
+                <div class="form">
+                    @using (Html.BeginForm("UpdateAppUser", "AppUser", FormMethod.Post, new { enctype = "multipart/form-data", @class = "cmxform form-horizontal tasi-form" }))
+                    {
+                        @Html.HiddenFor(x => x.ID)
+                        @Html.HiddenFor(x => x.ImagePath)
+                        @Html.HiddenFor(x => x.Password)
+                        @Html.HiddenFor(x => x.BirthDate)
+                        @Html.ActionLink("Şifresini Değiştir", "UpdateAppUserPassword", "AppUser", new { id = Model.ID }, new { @class = "btn btn-success" })<hr />
+                        <div class="form-group ">
+                            <label for="lastname" class="control-label col-lg-2">Kullanıcı Rolü:</label>
+                            <div class="col-lg-10">
+                                @Html.EnumDropDownListFor(x => x.Role, "Lütfen Seçim Yapınız", new { @class = "btn btn-white dropdown-toggle", style = "height:35px;width:200px" })
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="lastname" class="control-label col-lg-2">Aktif Mi?:</label>
+                            <div class="col-lg-1">
+                                @Html.CheckBoxFor(x => x.IsActive, new { @class = "checkbox form-control" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-group ">
+                            <label for="lastname" class="control-label col-lg-2">Ban Durumu:</label>
+                            <div class="col-lg-1">
+                                @Html.CheckBoxFor(x => x.IsBanned, new { @class = "checkbox form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="lastname" class="control-label col-lg-2">İsim:</label>
+                            <div class="col-lg-10">
+                                @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control", style = "height:25px;width:200px" })
+                                @Html.ValidationMessageFor(x => x.FirstName)
+                            </div>
+                        </div>
+
+
+                        <div class="form-group ">
+                            <label for="lastname" class="control-label col-lg-2">Soyad:</label>
+                            <div class="col-lg-10">
+                                @Html.TextBoxFor(x => x.LastName, new { @class = "form-control", style = "height:25px;width:200px" })
+                                @Html.ValidationMessageFor(x => x.LastName)
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="lastname" class="control-label col-lg-2">Cinsiyet:</label>
+                            <div class="col-lg-10">
+                                @Html.EnumDropDownListFor(x => x.Gender, "Lütfen Seçim Yapınız", new { @class = "btn btn-white dropdown-toggle", style = "height:35px;width:200px" })
+                            </div>
+                        </div>
+
+                        @*<div class="form-group">
+                <label class="control-label col-lg-2">Doğum Tarihi:</label>
+                <div class="col-md-3 col-xs-11">
+
+                    <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="12-02-2012" class="input-append date dpYears">
+                        @Html.TextBoxFor(x => x.BirthDate, new { @class = "form-control", value = "12-02-2012", size = "16", @readonly = "" }) @Html.ValidationMessageFor(x => x.BirthDate)
+
+                        <span class="input-group-btn add-on">
+                            <button class="btn btn-danger" type="button"><i class="icon-calendar"></i></button>
+                        </span>
+                    </div>
+                    <span class="help-block">Tarih Seç</span>
+                </div>
+            </div>*@
+
+
+                        <div class="form-group ">
+                            <label for="lastname" class="control-label col-lg-2">Kullanıcı Adı:</label>
+                            <div class="col-lg-10">
+                                @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", style = "height:25px;width:200px" })
+                                @Html.ValidationMessageFor(x => x.UserName)
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="lastname" class="control-label col-lg-2">E-Posta:</label>
+                            <div class="col-lg-10">
+                                @Html.TextBoxFor(x => x.Email, new { @class = "form-control", style = "height:25px;width:200px" })
+                                @Html.ValidationMessageFor(x => x.Email)
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="lastname" class="control-label col-lg-2">Hakkında:</label>
+                            <div class="col-lg-10">
+                                @Html.TextAreaFor(x => x.AboutDescription, new { style = "height:25px;width:200px", placeholder = "Hakkında Bir şeyler Yaz" })
+                                @Html.ValidationMessageFor(x => x.AboutDescription)
+                            </div>
+                        </div>
+
+                        <div class="form-group last">
+                            <label for="lastname" class="control-label col-lg-2">Resim Yükle:</label>
+                            <div class="col-md-9">
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                    <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                        <img src="@Model.ImagePath" alt="" />
+                                    </div>
+                                    <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                    <div>
+                                        <span class="btn btn-white btn-file">
+                                            <span class="fileupload-new"><i class="icon-paper-clip"></i> Resim Seç</span>
+                                            <span class="fileupload-exists"><i class="icon-undo"></i> Değiştir</span>
+                                            <input type="file" class="default" name="resim" />
+                                        </span>
+                                        <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="icon-trash"></i> Sil</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <button class="btn btn-danger" type="submit">Güncelle</button>
+                                @Html.ActionLink("İptal Et", "ListAppUser", null, new { @class = "btn btn-default" })
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- page end-->

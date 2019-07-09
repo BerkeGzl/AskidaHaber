@@ -1,0 +1,81 @@
+﻿@model AppUser
+@{
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Askıda Haber Kayıt</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100 p-b-160 p-t-50">
+                @if (ViewBag.Kayitli != null)
+                {
+                    <h1 style="color:red">@ViewBag.Kayitli</h1>
+                }
+
+                @if (ViewBag.NotActive != null)
+                {
+                    <h1 style="color:red">@ViewBag.NotActive</h1>
+                }
+
+                @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { @class = "login100-form validate-form" }))
+                {
+                    <span class="login100-form-title p-b-43">
+                        Hesap Kayıt
+                    </span>
+                    <div class="wrap-input100 rs1 validate-input" data-validate="Username is required">
+                        @Html.TextBoxFor(x => x.FirstName, new { placeholder = "İsim", @class = "input100", name = "pass" }) @Html.ValidationMessageFor(x => x.FirstName)
+                    </div>
+
+                    <div class="wrap-input100 rs2 validate-input" data-validate="Password is required">
+                        @Html.TextBoxFor(x => x.LastName, new { placeholder = "Soyad", @class = "input100", name = "pass" }) @Html.ValidationMessageFor(x => x.Password)
+                    </div>
+
+                    <div class="wrap-input100 rs2 validate-input" data-validate="Password is required">
+                        Cinsiyet Seçin: @Html.EnumDropDownListFor(x => x.Gender, new { @class = "input100", name = "pass" })
+                    </div>
+
+                    <div class="wrap-input100 rs2 validate-input" data-validate="Password is required">
+                        @Html.TextBoxFor(x => x.BirthDate, new { data_format = "dd/mm/yyyy", placeholder = "Doğum Tarihi: Ay / Gün / Yıl", @class = "input100", name = "pass" }) @Html.ValidationMessageFor(x => x.BirthDate)
+                    </div>
+
+                    <div class="wrap-input100 rs2 validate-input" data-validate="Password is required">
+                        @Html.TextBoxFor(x => x.UserName, new { placeholder = "Kullanıcı Adı", @class = "input100", name = "pass" }) @Html.ValidationMessageFor(x => x.UserName)
+                    </div>
+
+                    <div class="wrap-input100 rs2 validate-input" data-validate="Password is required">
+                        @Html.TextBoxFor(x => x.Password, new { placeholder = "Şifre", @class = "input100", name = "pass" }) @Html.ValidationMessageFor(x => x.Password)
+                    </div>
+
+                    <div class="wrap-input100 rs2 validate-input" data-validate="Password is required">
+                        @Html.TextBoxFor(x => x.RePassword, new { placeholder = "Tekrar Şifre", @class = "input100", name = "pass" }) @Html.ValidationMessageFor(x => x.RePassword)
+                    </div>
+
+                    <div class="wrap-input100 rs2 validate-input" data-validate="Password is required">
+                        @Html.TextBoxFor(x => x.Email, new { placeholder = "E-Posta", @class = "input100", name = "pass" }) @Html.ValidationMessageFor(x => x.Email)
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            Kayıt Ol
+                        </button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+

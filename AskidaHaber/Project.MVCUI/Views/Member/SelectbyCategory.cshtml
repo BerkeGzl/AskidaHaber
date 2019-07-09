@@ -1,0 +1,162 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model Tuple<IPagedList<News>, Category, List<News>>
+
+
+
+@{
+    ViewBag.Title = "SelectbyCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    @if (Model.Item2 == null)
+    {
+        <title>Kategori Yok</title>
+    }
+    else
+    {
+        <title>@Model.Item2.CategoryName</title>
+    }
+
+</head>
+
+<body>
+    <div class="site-main-container">
+        <!-- Start top-post Area -->
+        <section class="top-post-area pt-10">
+            <div class="container no-padding">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="hero-nav-area">
+                            @if (Model.Item2 == null)
+                            {
+                                <h1 class="text-white">Kategori Yok</h1>
+                            }
+                            else
+                            {
+                                <h1 class="text-white">@Model.Item2.CategoryName</h1>
+                                <p class="text-white link-nav">@Html.ActionLink("Ana Sayfa", "NewsList", "Member", new { @class = "menu-active" })  <span class="lnr lnr-arrow-right"></span>@Html.ActionLink(Model.Item2.CategoryName, "SelectbyCategory", "Member", new {category= Url.FriendlyURLTitle(Model.Item2.CategoryName), id = Model.Item2.ID })</p>
+                            }
+
+                        </div>
+                    </div>
+                    @{
+                        @Html.Action("SonDakika");
+                    }
+                </div>
+            </div>
+        </section>
+        <!-- End top-post Area -->
+        <!-- Start latest-post Area -->
+        <section class="latest-post-area pb-120">
+            <div class="container no-padding">
+                <div class="row">
+                    <div class="col-lg-8 post-list">
+                        <!-- Start latest-post Area -->
+                        <div class="latest-post-wrap">
+                            @if (Model.Item2 == null)
+                            {
+                            <h4 class="cat-title">Kategori Yok</h4>
+                            }
+                            else
+                            {
+                                <h4 class="cat-title">@Model.Item2.CategoryName</h4>
+                            }
+                            
+                            @foreach (News item in Model.Item1)
+                            {
+                                <div class="single-latest-post row align-items-center">
+                                    <div class="col-lg-5 post-left">
+                                        <div class="feature-img relative">
+                                            <div class="overlay overlay-bg"></div>
+                                            @if (item.ImagePath == "Dosya Boş")
+                                            {
+                                                <img class="img-fluid" src="~/Pictures/Site/news-default.jpg" />
+                                            }
+                                            else
+                                            {
+                                                <img class="img-fluid" src="@item.ImagePath"/>
+                                            }
+                                        </div>
+                                        <ul class="tags">
+                                            <li>@Html.ActionLink(@item.Category.CategoryName, "SelectbyCategory", new { id = item.CategoryID })</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-7 post-right">
+                                        <h4>@Html.ActionLink(item.Title, "DetailsNews", "Member", new {category=Url.FriendlyURLTitle(item.Category.CategoryName),Title=Url.FriendlyURLTitle(item.Title), id = item.ID, catID = item.CategoryID }, new { style = "color:black" })</h4>
+                                        <ul class="meta">
+                                            <li><span class="lnr lnr-calendar-full"></span>@item.CreatedDate</li>
+                                            <li><span class="lnr lnr-bubble"></span>@item.Comments.Count</li>
+                                        </ul>
+                                        <p class="excert">
+                                            @item.Summary
+                                        </p>
+                                    </div>
+                                </div>
+                            }
+                            <div class="load-more">
+                                <div class="pagedList">
+                                    @Html.PagedListPager(Model.Item1, _sayfa => Url.Action("SelectbyCategory", "Member", new { sayfa = _sayfa }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End latest-post Area -->
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="sidebars-area">
+                            <div class="single-sidebar-widget editors-pick-widget">
+                                <h6 class="title">Son Haberler</h6>
+                                <div class="editors-pick-post">
+                                    @foreach (News item in Model.Item3.Take(4))
+                                    {
+                                        <div class="feature-img-wrap relative">
+                                            <div class="feature-img relative">
+                                                <div class="overlay overlay-bg"></div>
+                                                @if (item.ImagePath == "Dosya Boş")
+                                                {
+                                                    <img class="img-fluid" src="~/Pictures/Site/news-default.jpg" />
+                                                }
+                                                else
+                                                {
+                                                    <img class="img-fluid" src="@item.ImagePath" alt="">
+                                                }
+                                            </div>
+                                            <ul class="tags">
+                                                <li>@Html.ActionLink(@item.Category.CategoryName, "SelectbyCategory", new {category= Url.FriendlyURLTitle(item.Category.CategoryName), id = item.CategoryID })</li>
+                                            </ul>
+                                        </div>
+                                        <div class="details">
+                                            <h4>@Html.ActionLink(item.Title, "DetailsNews", "Member", new {category=Url.FriendlyURLTitle(item.Category.CategoryName),Title=Url.FriendlyURLTitle(item.Title), id = item.ID, catID = item.CategoryID }, new { style = "color:black" })</h4>
+                                            <ul class="meta">
+                                                <li><span class="lnr lnr-calendar-full"></span>@item.CreatedDate</li>
+                                                <li><span class="lnr lnr-bubble"></span>@item.Comments.Count</li>
+                                            </ul>
+                                            <p class="excert">
+                                                @item.Summary
+                                            </p>
+                                        </div>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End latest-post Area -->
+    </div>
+</body>
+</html>

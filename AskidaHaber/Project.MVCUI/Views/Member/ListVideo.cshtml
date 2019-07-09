@@ -1,0 +1,51 @@
+﻿@using PagedList;
+@model IPagedList<News>
+@{
+    ViewBag.Title = "ListVideo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>Videolar</title>
+</head>
+
+<body>
+    <!-- Start latest-post Area -->
+    <section class="latest-post-area pb-120">
+        <div class="container no-padding">
+            <div class="row">
+                <div class="col-lg-8 post-list">
+                    <!-- Start latest-post Area -->
+
+                    <div class="popular-post-wrap" style="width:1170px">
+                        <h4 class="title">Haber Videoları</h4>
+
+                        <div id="VideoListesi">
+                            @Html.Partial("~/Views/Member/_VideoList.cshtml", Model)
+                        </div>
+
+
+                    </div>
+                    <!-- End latest-post Area -->
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End latest-post Area -->
+</body>
+
+</html>
+

@@ -1,0 +1,68 @@
+﻿@model List<Log>
+@{
+    ViewBag.Title = "LogList";
+    Layout = "~/Areas/Admin/Views/Shared/AdminAreaLayout.cshtml";
+}
+<title>Günlükler</title>
+
+<!-- page start-->
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                Günlük Listesi
+            </header>
+            <div class="panel-body">
+                <div class="adv-table">
+                    <table class="display table table-bordered table-striped" id="example">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Kullanıcı Adı</th>
+                                <th>Action Adı</th>
+                                <th>Controller Adı</th>
+                                <th>Bilgi</th>
+                                <th>Açıklama</th>
+                                <th>IP Adresi</th>
+                                <th>Oluşturulma Tarihi</th>
+                                <th>Url Erişimi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Log item in Model)
+                            {
+                                <tr class="gradeX">
+                                    <td>@item.ID</td>
+                                    <td>@item.WhoIs</td>
+                                    <td>@item.ActionName</td>
+                                    <td>@item.ControllorName</td>
+                                    <td>@item.Information</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.IPAdress</td>
+                                    <td>@item.CreatedDate</td>
+                                    <td>@item.UrlAccessed</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>#</th>
+                                <th>Kullanıcı Adı</th>
+                                <th>Action Adı</th>
+                                <th>Controller Adı</th>
+                                <th>Bilgi</th>
+                                <th>Açıklama</th>
+                                <th>IP Adresi</th>
+                                <th>Oluşturulma Tarihi</th>
+                                <th>Url Erişimi</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<!-- page end-->
+

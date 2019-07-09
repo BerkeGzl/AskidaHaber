@@ -1,0 +1,37 @@
+﻿.root h2 {
+    position: relative;
+    padding-bottom: 10px;
+}
+
+    .root h2 div.border-root div {
+        position: absolute;
+        bottom: 0;
+        height: 5px;
+        background: red;
+    }
+
+        .root h2 div.border-root div:first-child, .root h2 div.border-root div:last-child {
+            width: 30px;
+        }
+
+        .root h2 div.border-root div:first-child {
+            left: 0;
+        }
+
+        .root h2 div.border-root div:nth-child(2) {
+            width: 80px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+        }
+
+        .root h2 div.border-root div:last-child {
+            right: 0;
+        }
+
+.root .border-root {
+    position: relative;
+    width: 200px;
+    margin: 0 auto;
+    margin-top: 15px;
+}

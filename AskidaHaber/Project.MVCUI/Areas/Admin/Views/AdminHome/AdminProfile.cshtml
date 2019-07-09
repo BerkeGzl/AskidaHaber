@@ -1,0 +1,70 @@
+﻿@model AppUser
+@{
+    ViewBag.Title = "AdminProfile";
+    Layout = "~/Areas/Admin/Views/Shared/AdminAreaLayout.cshtml";
+}
+<title>Profil</title>
+
+
+<!-- page start-->
+<div class="row">
+    <aside class="profile-nav col-lg-3">
+        <section class="panel">
+            <div class="user-heading round">
+                @if (Model.ImagePath == "Dosya Boş" || Model.ImagePath == null)
+                {
+                    <a href="#">
+                        <img  src="~/Pictures/Site/IDefaultProfile.png" alt="" />
+                    </a>
+                }
+                else
+                {
+                    <a href="#">
+                        <img src="@Model.ImagePath" alt="">
+                    </a>
+                }
+                <h1>@Model.FullName</h1>
+                <p>@Model.Email</p>
+            </div>
+
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="@Url.Action("AdminProfile", "AdminHome", new { id = Model.ID })"> <i class="icon-user"></i> Profil</a></li>
+                <li><a href="@Url.Action("UpdatePassword", "AdminHome", new { id = Model.ID })"> <i class="icon-edit"></i> Şifre Değiştir </a></li>
+                <li><a href="@Url.Action("UpdateProfile", "AdminHome", new { id = Model.ID })"> <i class="icon-edit"></i>Profil Düzenle</a></li>
+            </ul>
+
+        </section>
+    </aside>
+    <aside class="profile-info col-lg-9">
+        <section class="panel">
+            <div class="bio-graph-heading">
+                @Model.AboutDescription
+            </div>
+            <div class="panel-body bio-graph-info">
+                <h1>Hakkında</h1>
+                <div class="row">
+                    <div class="bio-row">
+                        <p><span>İsim </span>: @Model.FirstName</p>
+                    </div>
+                    <div class="bio-row">
+                        <p><span>Soyad </span>: @Model.LastName</p>
+                    </div>
+                    <div class="bio-row">
+                        <p><span>Cinsiyet </span>: @Model.Gender</p>
+                    </div>
+                    <div class="bio-row">
+                        <p><span>Doğum Tarihi</span>: @Model.BirthDate.Value.ToShortDateString()</p>
+                    </div>
+                    <div class="bio-row">
+                        <p><span>Kullanıcı Adı: </span>: @Model.UserName</p>
+                    </div>
+                    <div class="bio-row">
+                        <p><span>Email </span>: @Model.Email</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+</div>
+
+<!-- page end-->

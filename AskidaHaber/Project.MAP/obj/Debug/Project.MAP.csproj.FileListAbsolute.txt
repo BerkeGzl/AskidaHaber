@@ -1,0 +1,14 @@
+C:\Users\Berke\source\repos\AskidaHaber\Project.MAP\bin\Debug\Project.MAP.dll.config
+C:\Users\Berke\source\repos\AskidaHaber\Project.MAP\bin\Debug\Project.MAP.dll
+C:\Users\Berke\source\repos\AskidaHaber\Project.MAP\bin\Debug\Project.MAP.pdb
+C:\Users\Berke\source\repos\AskidaHaber\Project.MAP\bin\Debug\EntityFramework.dll
+C:\Users\Berke\source\repos\AskidaHaber\Project.MAP\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Berke\source\repos\AskidaHaber\Project.MAP\bin\Debug\Project.MODEL.dll
+C:\Users\Berke\source\repos\AskidaHaber\Project.MAP\bin\Debug\Project.MODEL.pdb
+C:\Users\Berke\source\repos\AskidaHaber\Project.MAP\bin\Debug\EntityFramework.xml
+C:\Users\Berke\source\repos\AskidaHaber\Project.MAP\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Berke\source\repos\AskidaHaber\Project.MAP\obj\Debug\Project.MAP.csprojAssemblyReference.cache
+C:\Users\Berke\source\repos\AskidaHaber\Project.MAP\obj\Debug\Project.MAP.csproj.CoreCompileInputs.cache
+C:\Users\Berke\source\repos\AskidaHaber\Project.MAP\obj\Debug\Project.MAP.csproj.CopyComplete
+C:\Users\Berke\source\repos\AskidaHaber\Project.MAP\obj\Debug\Project.MAP.dll
+C:\Users\Berke\source\repos\AskidaHaber\Project.MAP\obj\Debug\Project.MAP.pdb
