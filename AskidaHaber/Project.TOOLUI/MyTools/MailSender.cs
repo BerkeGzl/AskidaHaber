@@ -5,7 +5,7 @@ namespace Project.TOOLUI.MyTools
 {
     public static class MailSender
     {
-        public static void Send(string receiver, string password = "Berke123", string body = "Deneme", string subject = "Merhaba!", string sender = "askidahaber@outlook.com")
+        public static void Send(string receiver, string password = "Berke123", string body = "Deneme", string subject = "Merhaba!", string sender = "askidahaber1@outlook.com")
         {
             MailAddress senderEmail = new MailAddress(sender);
             MailAddress receiverEmail = new MailAddress(receiver);
